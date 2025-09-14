@@ -4,13 +4,20 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -30,31 +37,32 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.focusito03.R
+import com.example.focusito03.ui.theme.tasaFamily
 
 @Composable
 fun Login() {
     Box(modifier = Modifier) {
         Image(
-            painter = painterResource(id = R.drawable.fondodelogin),
+            painter = painterResource(id = R.drawable.fonfodelogin),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
         Mapache()
-
     }
 }
 @Composable
-fun Mapache(){
+fun Mapache() {
+
     Column(modifier = Modifier.fillMaxWidth()
         .fillMaxHeight(1f),
         horizontalAlignment = Alignment.CenterHorizontally
-                ) {
+    ) {
         var correo by remember { mutableStateOf("") }
         var contrasenia by remember { mutableStateOf("") }
 
         Icon(
-            painter = painterResource(id = R.drawable.mapach),
+            painter = painterResource(id = R.drawable.mapache),
             contentDescription = "icon",
             modifier = Modifier
                 .height(400.dp)
@@ -67,6 +75,11 @@ fun Mapache(){
             placeholder = { Text("Correo electrónico",
             ) },
             shape = RoundedCornerShape(25.dp),
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.AccountCircle,
+                    contentDescription = "Buscar"
+                )},
             modifier = Modifier
                 .fillMaxWidth(0.8f)
                 .height(56.dp)
@@ -78,14 +91,17 @@ fun Mapache(){
                 unfocusedContainerColor = Color.White
             )
         )
-
         Spacer(modifier = Modifier.height(10.dp))
-
         TextField(
             value = contrasenia,
             onValueChange = { contrasenia = it },
             placeholder = { Text("Contraseña") },
             shape = RoundedCornerShape(25.dp),
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Lock,
+                    contentDescription = "Buscar"
+                )},
             modifier = Modifier
                 .fillMaxWidth(0.8f)
                 .height(56.dp)
@@ -95,23 +111,53 @@ fun Mapache(){
                 unfocusedIndicatorColor = Color.Transparent,
                 focusedContainerColor = Color.White,
                 unfocusedContainerColor = Color.White
-                )
-              )
+            )
+        )
         TextButton(
             onClick = {}
         ) {
-            Text(text = "¿Olvidaste tu contraseña?", fontSize = 20.sp
+            Text(
+                text = "¿Olvidaste tu contraseña?",
+                fontSize = 20.sp,
+                fontFamily = tasaFamily,
+                color = Color(0xFF051d40)
             )
         }
-
+        Button(
+            onClick = {},
+            modifier = Modifier.run { size(width = 200.dp, height = 60.dp) },
+            contentPadding = PaddingValues(horizontal = 10.dp, vertical =20.dp),
+            colors =  ButtonDefaults.buttonColors(Color(0xFF051d40)),
+            ) {
+            Text(
+                text = "Iniciar sesión",
+                fontSize = 20.sp
+            )
+        }
+        TextButton(
+            onClick = {}
+        ) {
+            Text(
+                text = "¿Aun no tienes cuenta?",
+                color = Color(0xFF051d40),
+                fontSize = 20.sp
+            )
+        }
+        TextButton(onClick = {}
+        ) {
+            Text(
+                text = "Registrate",  color = Color(0xFF051d40),
+                fontSize = 20.sp
+            )
+        }
     }
 }
 
 @Preview(
     showBackground = true,
-    showSystemUi = true,
     name = "Login Preview"
 )
+
 @Composable
 fun LoginPreview() {
     Login()

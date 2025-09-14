@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Focusito03"
+rootProject.name = "FOCUSITO0.3"
 include(":app")
  
