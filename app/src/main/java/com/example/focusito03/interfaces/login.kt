@@ -40,7 +40,10 @@ import com.example.focusito03.R
 import com.example.focusito03.ui.theme.tasaFamily
 
 @Composable
-fun Login() {
+fun Login(
+    onLoginClick: () -> Unit = {},
+    onRegisterClick: () -> Unit = {}
+) {
     Box(modifier = Modifier) {
         Image(
             painter = painterResource(id = R.drawable.fonfodelogin),
@@ -48,11 +51,17 @@ fun Login() {
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
-        Mapache()
+        Mapache(
+            onLoginClick = onLoginClick,
+            onRegisterClick = onRegisterClick
+        )
     }
 }
 @Composable
-fun Mapache() {
+fun Mapache(
+    onLoginClick: () -> Unit = {},
+    onRegisterClick: () -> Unit = {}
+) {
 
     Column(modifier = Modifier.fillMaxWidth()
         .fillMaxHeight(1f),
@@ -124,7 +133,7 @@ fun Mapache() {
             )
         }
         Button(
-            onClick = {},
+            onClick = onLoginClick,
             modifier = Modifier.run { size(width = 200.dp, height = 60.dp) },
             contentPadding = PaddingValues(horizontal = 10.dp, vertical =20.dp),
             colors =  ButtonDefaults.buttonColors(Color(0xFF051d40)),
@@ -143,7 +152,7 @@ fun Mapache() {
                 fontSize = 20.sp
             )
         }
-        TextButton(onClick = {}
+        TextButton(onClick = onRegisterClick
         ) {
             Text(
                 text = "Registrate",  color = Color(0xFF051d40),

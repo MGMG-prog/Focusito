@@ -36,7 +36,10 @@ import androidx.compose.ui.unit.sp
 import com.example.focusito03.R
 
 @Composable
-fun registro() {
+fun registro(
+    onRegisterClick: () -> Unit = {},
+    onLoginClick: () -> Unit = {}
+) {
     Box(modifier = Modifier) {
         Image(
             painter = painterResource(id = R.drawable.fonfodelogin),
@@ -44,11 +47,17 @@ fun registro() {
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
-          np()
+          np(
+              onRegisterClick = onRegisterClick,
+              onLoginClick = onLoginClick
+          )
     }
 }
 @Composable
-fun np() {
+fun np(
+    onRegisterClick: () -> Unit = {},
+    onLoginClick: () -> Unit = {}
+) {
     Column(
         modifier = Modifier.fillMaxWidth()
             .fillMaxHeight(1f),
@@ -122,7 +131,7 @@ fun np() {
         )
         Spacer(modifier = Modifier.height(25.dp))
         Button(
-            onClick = {},
+            onClick = onRegisterClick,
             modifier = Modifier.run { size(width = 200.dp, height = 60.dp) },
             contentPadding = PaddingValues(horizontal = 10.dp, vertical =20.dp),
             colors =  ButtonDefaults.buttonColors(Color(0xFF051d40)),
@@ -142,7 +151,7 @@ fun np() {
                 fontSize = 20.sp
             )
         }
-        TextButton(onClick = {}
+        TextButton(onClick = onLoginClick
         ) {
             Text(
                 text = "Inicia sesión",  color = Color(0xFF051d40),

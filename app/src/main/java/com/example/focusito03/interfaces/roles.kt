@@ -27,7 +27,9 @@ import androidx.compose.ui.unit.dp
 import com.example.focusito03.R
 
 @Composable
-fun roles() {
+fun roles(
+    onBackClick: () -> Unit = {}
+) {
         Box(modifier = Modifier.fillMaxSize()) {
 
             Image(
@@ -43,6 +45,7 @@ fun roles() {
                 modifier = Modifier
                     .size(50.dp)
                     .align(Alignment.TopStart)
+                    .clickable { onBackClick() }
             )
             Icon(
                 painter = painterResource(id = R.drawable.sonido),

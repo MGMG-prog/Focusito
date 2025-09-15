@@ -1,6 +1,5 @@
 package com.example.focusito03.interfaces
 
-import PantallaPrincipal
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box

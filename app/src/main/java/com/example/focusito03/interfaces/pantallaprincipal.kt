@@ -16,7 +16,9 @@ import androidx.compose.ui.unit.sp
 import com.example.focusito03.R
 
 @Composable
-fun PantallaPrincipal() {
+fun Pantallainicio(
+    onContinueClick: () -> Unit = {}
+) {
     Box {
         Image(
             painter = painterResource(id = R.drawable.fondoprincipal),
@@ -24,12 +26,14 @@ fun PantallaPrincipal() {
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
-        Inicio()
+        Inicio(onContinueClick = onContinueClick)
     }
 }
 
 @Composable
-fun Inicio() {
+fun Inicio(
+    onContinueClick: () -> Unit = {}
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -39,7 +43,7 @@ fun Inicio() {
     ) {
         Spacer(modifier = Modifier.height(650.dp))
         Button(
-            onClick = { },
+            onClick = onContinueClick,
             modifier = Modifier
                 .width(240.dp)
                 .height(45.dp),
@@ -56,6 +60,6 @@ fun Inicio() {
 
 @Preview(showBackground = true, name = "Preview")
 @Composable
-fun PreviewInicio() {
-    PantallaPrincipal()
+fun Preview() {
+Pantallainicio()
 }
