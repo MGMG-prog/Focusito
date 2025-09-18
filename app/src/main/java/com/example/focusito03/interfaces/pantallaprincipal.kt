@@ -13,11 +13,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
+import com.example.focusito03.navegacion.Screen
 
 @Composable
-fun Pantallainicio(
-    onContinueClick: () -> Unit = {}
+fun Pantallainicio(navController: NavController,
 ) {
     Box {
         Image(
@@ -26,34 +28,28 @@ fun Pantallainicio(
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
-        Inicio(onContinueClick = onContinueClick)
-    }
-}
 
-@Composable
-fun Inicio(
-    onContinueClick: () -> Unit = {}
-) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Spacer(modifier = Modifier.height(650.dp))
-        Button(
-            onClick = onContinueClick,
+        Column(
             modifier = Modifier
-                .width(240.dp)
-                .height(45.dp),
-            colors = ButtonDefaults.buttonColors(Color(0xFFc3dce5))
+                .fillMaxWidth()
+                .fillMaxHeight(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
-            Text(
-                text = "CONTINUAR",
-                fontSize = 20.sp,
-                color = Color.White
-            )
+            Spacer(modifier = Modifier.height(650.dp))
+            Button(
+                {navController.navigate(Screen.login.route)},
+                modifier = Modifier
+                    .width(240.dp)
+                    .height(45.dp),
+                colors = ButtonDefaults.buttonColors(Color(0xFFc3dce5))
+            ) {
+                Text(
+                    text = "CONTINUAR",
+                    fontSize = 20.sp,
+                    color = Color.White
+                )
+            }
         }
     }
 }
@@ -61,5 +57,5 @@ fun Inicio(
 @Preview(showBackground = true, name = "Preview")
 @Composable
 fun Preview() {
-Pantallainicio()
+Pantallainicio(navController = rememberNavController())
 }

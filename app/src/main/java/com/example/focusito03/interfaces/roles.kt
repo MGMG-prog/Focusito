@@ -24,72 +24,73 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
 
 @Composable
-fun roles(
-    onBackClick: () -> Unit = {}
+fun roles(navController: NavController,
 ) {
-        Box(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = Modifier.fillMaxSize()) {
 
-            Image(
-                painter = painterResource(id = R.drawable.estrellas),
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize()
-            )
-            Icon(
-                imageVector = Icons.Filled.ArrowBack,
-                contentDescription = "Volver",
-                tint = Color.Black,
-                modifier = Modifier
-                    .size(50.dp)
-                    .align(Alignment.TopStart)
-                    .clickable { onBackClick() }
-            )
-            Icon(
-                painter = painterResource(id = R.drawable.sonido),
-                contentDescription = "Sonido",
-                tint = Color.Unspecified,
-                modifier = Modifier
-                    .size(50.dp)
-                    .align(Alignment.TopEnd)
-            )
-            map()
+        Image(
+            painter = painterResource(id = R.drawable.estrellas),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize()
+        )
+        Icon(
+            imageVector = Icons.Filled.ArrowBack,
+            contentDescription = "Volver",
+            tint = Color.Black,
+            modifier = Modifier
+                .size(50.dp)
+                .align(Alignment.TopStart)
+        )
+        Icon(
+            painter = painterResource(id = R.drawable.sonido),
+            contentDescription = "Sonido",
+            tint = Color.Unspecified,
+            modifier = Modifier
+                .size(50.dp)
+                .align(Alignment.TopEnd)
+        )
+
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(1f),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Row {
+                Image(
+                    painter = painterResource(R.drawable.pepa),
+                    contentDescription = "Mapa",
+                    modifier = Modifier
+                        .size(152.dp)
+                        .clickable { }
+                )
+                Spacer(modifier = Modifier.height(25.dp))
+                Image(
+                    painter = painterResource(R.drawable.mapa),
+                    contentDescription = "Mapa",
+                    modifier = Modifier
+                        .size(150.dp)
+                        .clickable { }
+                )
+            }
         }
     }
+}
 
-@Composable
-fun map () {
-    Column (modifier = Modifier
-        .fillMaxWidth()
-        .fillMaxHeight(1f),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center){
-Row {
-    Image(
-        painter = painterResource(R.drawable.pepa),
-        contentDescription = "Mapa",
-        modifier = Modifier
-            .size(152.dp)
-            .clickable { }
-    )
-    Spacer(modifier = Modifier.height(25.dp))
-    Image(
-        painter = painterResource(R.drawable.mapa),
-        contentDescription = "Mapa",
-        modifier = Modifier
-            .size(150.dp)
-            .clickable {  }
-    )
-}
-    }
-}
+
+
 @Preview(
     showBackground = true,
     name = "Login Preview"
 )
 @Composable
 fun rp() {
-roles()
+roles(navController = rememberNavController())
 }

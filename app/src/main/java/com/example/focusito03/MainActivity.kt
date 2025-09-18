@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
-import com.example.focusito03.navigation.AppNavigation
+import com.example.focusito03.navegacion.tress
 import com.example.focusito03.ui.theme.FOCUSITO03Theme
 
 class MainActivity : ComponentActivity() {
@@ -22,8 +22,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             FOCUSITO03Theme {
                 val navController = rememberNavController()
-                AppNavigation(navController = navController)
+                tress()
             }
+
         }
     }
 }

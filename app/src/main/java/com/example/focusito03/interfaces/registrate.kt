@@ -33,12 +33,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
 
 @Composable
-fun registro(
-    onRegisterClick: () -> Unit = {},
-    onLoginClick: () -> Unit = {}
+fun registro(navController: NavController,
 ) {
     Box(modifier = Modifier) {
         Image(
@@ -47,17 +47,7 @@ fun registro(
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
-          np(
-              onRegisterClick = onRegisterClick,
-              onLoginClick = onLoginClick
-          )
-    }
-}
-@Composable
-fun np(
-    onRegisterClick: () -> Unit = {},
-    onLoginClick: () -> Unit = {}
-) {
+
     Column(
         modifier = Modifier.fillMaxWidth()
             .fillMaxHeight(1f),
@@ -130,8 +120,9 @@ fun np(
             )
         )
         Spacer(modifier = Modifier.height(25.dp))
+        val onRegisterClick = null
         Button(
-            onClick = onRegisterClick,
+            onClick = { onRegisterClick },
             modifier = Modifier.run { size(width = 200.dp, height = 60.dp) },
             contentPadding = PaddingValues(horizontal = 10.dp, vertical =20.dp),
             colors =  ButtonDefaults.buttonColors(Color(0xFF051d40)),
@@ -139,7 +130,8 @@ fun np(
             ) {
             Text(
                 text = "Crear cuenta",
-                fontSize = 20.sp
+                fontSize = 20.sp,
+                color = Color.White
             )
         }
         TextButton(
@@ -151,13 +143,15 @@ fun np(
                 fontSize = 20.sp
             )
         }
-        TextButton(onClick = onLoginClick
+        val onLoginClick = null
+        TextButton(onClick = { onLoginClick }
         ) {
             Text(
                 text = "Inicia sesión",  color = Color(0xFF051d40),
                 fontSize = 20.sp) }
     }
 }
+    }
 
 @Preview(
     showBackground = true,
@@ -165,5 +159,5 @@ fun np(
 )
 @Composable
 fun rv() {
-registro()
+registro(navController = rememberNavController())
 }
