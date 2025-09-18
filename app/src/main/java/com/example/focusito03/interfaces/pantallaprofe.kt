@@ -45,104 +45,99 @@ import com.example.focusito03.R
 import androidx.compose.ui.res.painterResource as painterResource1
 
 @Composable
-fun profe (navController: NavController,){
-Box(modifier = Modifier.fillMaxSize()) {
-    Image(
-        painter = painterResource(id = R.drawable.fondo),
-        contentDescription = null,
-        contentScale = ContentScale.Crop,
-        modifier = Modifier.fillMaxSize()
-    )
-    Icon(
-        imageVector = Icons.Filled.ArrowBack,
-        contentDescription = "Volver",
-        tint = Color.Black,
-        modifier = Modifier
-            .size(50.dp)
-            .align(Alignment.TopStart)
-    )
-    Icon(
-        painter = painterResource(id = R.drawable.sonido),
-        contentDescription = "Sonido",
-        tint = Color.Unspecified,
-        modifier = Modifier
-            .size(50.dp)
-            .align(Alignment.TopEnd)
-    )
-    so()
-}
-}
-
-@Composable
-fun  so() {
-    Column (
-        modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight(1f),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        var nombre by remember { mutableStateOf(" ") }
-        var correo by remember { mutableStateOf(" ") }
-
-        Spacer(modifier = Modifier.height(300.dp))
-        OutlinedButton(
-            onClick = {  },
-            shape = RoundedCornerShape(70.dp),
+fun profe (navController: NavController,) {
+    Box(modifier = Modifier.fillMaxSize()) {
+        Image(
+            painter = painterResource(id = R.drawable.fondo),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize()
+        )
+        Icon(
+            imageVector = Icons.Filled.ArrowBack,
+            contentDescription = "Volver",
+            tint = Color.Black,
             modifier = Modifier
-                .fillMaxWidth(0.8f)
-                .height(100.dp)
-                .border(4.dp, Color.Black, RoundedCornerShape(70.dp)),
-            colors = ButtonDefaults.outlinedButtonColors(
-                containerColor = Color.White,
-            )
+                .size(50.dp)
+                .align(Alignment.TopStart)
+        )
+        Icon(
+            painter = painterResource(id = R.drawable.sonido),
+            contentDescription = "Sonido",
+            tint = Color.Unspecified,
+            modifier = Modifier
+                .size(50.dp)
+                .align(Alignment.TopEnd)
+        )
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(1f),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Start
+            var nombre by remember { mutableStateOf(" ") }
+            var correo by remember { mutableStateOf(" ") }
+
+            Spacer(modifier = Modifier.height(300.dp))
+            OutlinedButton(
+                onClick = { },
+                shape = RoundedCornerShape(70.dp),
+                modifier = Modifier
+                    .fillMaxWidth(0.8f)
+                    .height(100.dp)
+                    .border(4.dp, Color.Black, RoundedCornerShape(70.dp)),
+                colors = ButtonDefaults.outlinedButtonColors(
+                    containerColor = Color.White,
+                )
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.acti),
-                    contentDescription = "icon",
-                    modifier = Modifier
-                        .size(100.dp)
-                )
-                Spacer(modifier = Modifier.width(12.dp))
-                Text(
-                    text = "Actividades",
-                    fontSize = 20.sp,
-                    color = Color.Black
-                )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Start
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.acti),
+                        contentDescription = "icon",
+                        modifier = Modifier
+                            .size(100.dp)
+                    )
+                    Spacer(modifier = Modifier.width(12.dp))
+                    Text(
+                        text = "Actividades",
+                        fontSize = 20.sp,
+                        color = Color.Black
+                    )
+                }
             }
-        }
-        Spacer(modifier = Modifier.height(30.dp))
-        OutlinedButton(
-            onClick = { },
-            shape = RoundedCornerShape(70.dp),
-            modifier = Modifier
-                .fillMaxWidth(0.8f)
-                .height(100.dp)
-                .border(4.dp, Color.Black, RoundedCornerShape(70.dp)),
-            colors = ButtonDefaults.outlinedButtonColors(
-                containerColor = Color.White,
-                contentColor = Color.Black
-            )
-        ) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Start
+            Spacer(modifier = Modifier.height(30.dp))
+            OutlinedButton(
+                onClick = { },
+                shape = RoundedCornerShape(70.dp),
+                modifier = Modifier
+                    .fillMaxWidth(0.8f)
+                    .height(100.dp)
+                    .border(4.dp, Color.Black, RoundedCornerShape(70.dp)),
+                colors = ButtonDefaults.outlinedButtonColors(
+                    containerColor = Color.White,
+                    contentColor = Color.Black
+                )
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.notes),
-                    contentDescription = "icon",
-                    modifier = Modifier
-                        .size(100.dp)
-                )
-                Spacer(modifier = Modifier.width(12.dp))
-                Text(
-                    text = "Notas",
-                    fontSize = 20.sp,
-                    color = Color.Black
-                )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Start
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.notes),
+                        contentDescription = "icon",
+                        modifier = Modifier
+                            .size(100.dp)
+                    )
+                    Spacer(modifier = Modifier.width(12.dp))
+                    Text(
+                        text = "Notas",
+                        fontSize = 20.sp,
+                        color = Color.Black
+                    )
+                }
             }
         }
     }

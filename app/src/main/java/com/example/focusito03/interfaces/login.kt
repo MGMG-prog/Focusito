@@ -41,10 +41,8 @@ import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
 import com.example.focusito03.navegacion.Screen
 
-
 @Composable
 fun Login(navController: NavController,
-    onRegisterClick: () -> Unit = {}
 ) {
     Box(modifier = Modifier) {
         Image(
@@ -149,7 +147,7 @@ fun Login(navController: NavController,
                 )
             }
             TextButton(
-                onClick = onRegisterClick
+                {navController.navigate(Screen.registrate.route)}
             ) {
                 Text(
                     text = "Registrate", color = Color(0xFF051d40),

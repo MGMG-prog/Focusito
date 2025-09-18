@@ -73,6 +73,7 @@ fun roles(navController: NavController,
                 )
                 Spacer(modifier = Modifier.height(25.dp))
                 Image(
+
                     painter = painterResource(R.drawable.mapa),
                     contentDescription = "Mapa",
                     modifier = Modifier

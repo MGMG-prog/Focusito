@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
+import com.example.focusito03.navegacion.Screen
 
 @Composable
 fun registro(navController: NavController,
@@ -47,7 +48,6 @@ fun registro(navController: NavController,
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
-
     Column(
         modifier = Modifier.fillMaxWidth()
             .fillMaxHeight(1f),
@@ -122,7 +122,7 @@ fun registro(navController: NavController,
         Spacer(modifier = Modifier.height(25.dp))
         val onRegisterClick = null
         Button(
-            onClick = { onRegisterClick },
+            {navController.navigate(Screen.roles.route)},
             modifier = Modifier.run { size(width = 200.dp, height = 60.dp) },
             contentPadding = PaddingValues(horizontal = 10.dp, vertical =20.dp),
             colors =  ButtonDefaults.buttonColors(Color(0xFF051d40)),
@@ -144,7 +144,8 @@ fun registro(navController: NavController,
             )
         }
         val onLoginClick = null
-        TextButton(onClick = { onLoginClick }
+        TextButton(
+            {navController.navigate(Screen.login.route)}
         ) {
             Text(
                 text = "Inicia sesión",  color = Color(0xFF051d40),
