@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
+import com.example.focusito03.navegacion.Screen
 
 
 @Composable
@@ -40,18 +42,24 @@ fun poemas(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.fabulas),
-                contentDescription = "icon",
-                modifier = Modifier
-                    .size(280.dp)
-            )
-            Image(
-                painter = painterResource(id = R.drawable.poemas),
-                contentDescription = "icon",
-                modifier = Modifier
-                    .size(280.dp)
-            )
+            Row {
+                {navController.navigate(Screen.roles.route)}
+                Image(
+                    painter = painterResource(id = R.drawable.fabulas),
+                    contentDescription = "icon",
+                    modifier = Modifier
+                        .size(280.dp)
+                )
+            }
+            Row {
+                {navController.navigate(Screen.roles.route)}
+                Image(
+                    painter = painterResource(id = R.drawable.poemas),
+                    contentDescription = "icon",
+                    modifier = Modifier
+                        .size(280.dp)
+                )
+            }
         }
     }
 }

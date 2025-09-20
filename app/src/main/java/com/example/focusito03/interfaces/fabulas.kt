@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
+import com.example.focusito03.navegacion.Screen
 
 @Composable
 fun fabula(navController: NavController) {
@@ -46,24 +47,33 @@ fun fabula(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.cierbo),
-            contentDescription = "icon",
-            modifier = Modifier
-                .size(210.dp)
-        )
+        Row {
+            { navController.navigate(Screen.fabula1.route) }
+            Image(
+                painter = painterResource(id = R.drawable.cierbo),
+                contentDescription = "icon",
+                modifier = Modifier
+                    .size(210.dp)
+            )
+        }
+        Row {
+            {navController.navigate(Screen.fabula2.route)}
         Image(
             painter = painterResource(id = R.drawable.zorr),
             contentDescription = "icon",
             modifier = Modifier
                 .size(210.dp)
         )
-        Image(
-            painter = painterResource(id = R.drawable.leon),
-            contentDescription = "icon",
-            modifier = Modifier
-                .size(210.dp)
-        )
+    }
+        Row {
+            {navController.navigate(Screen.fabula3.route)}
+            Image(
+                painter = painterResource(id = R.drawable.leon),
+                contentDescription = "icon",
+                modifier = Modifier
+                    .size(210.dp)
+            )
+        }
     }
 }
 

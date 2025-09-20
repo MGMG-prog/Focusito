@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
+import com.example.focusito03.navegacion.Screen
 
 @Composable
 fun fabut(navController: NavController) {
@@ -35,6 +36,7 @@ fun fabut(navController: NavController) {
         modifier = Modifier.fillMaxSize()
     )
     Row (modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
+        {navController.navigate(Screen.fabula2.route)}
         Icon(
             imageVector = Icons.Filled.ArrowBack,
             contentDescription = null,

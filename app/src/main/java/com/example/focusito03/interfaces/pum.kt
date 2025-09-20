@@ -49,7 +49,6 @@ fun tun(navController: NavController) {
             modifier = Modifier.size(50.dp)
         )
     }
-
     Column(
         modifier = Modifier
             .fillMaxWidth()

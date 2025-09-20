@@ -103,7 +103,7 @@ fun estud(navController: NavController) {
                     Card(
                         modifier = Modifier
                             .aspectRatio(1f)
-                            .clickable {  },
+                            .clickable {{navController.navigate(Screen.fabulasypoemas.route)} },
                         shape = RoundedCornerShape(16.dp),
                         elevation = CardDefaults.cardElevation(6.dp),
                         colors = CardDefaults.cardColors(

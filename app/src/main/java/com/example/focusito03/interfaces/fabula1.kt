@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
+import com.example.focusito03.navegacion.Screen
 
 @Composable
 fun fad(navController: NavController) {
@@ -37,6 +38,7 @@ fun fad(navController: NavController) {
         modifier = Modifier.fillMaxSize()
     )
     Row (modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+        {navController.navigate(Screen.contifabula1.route)}
         Icon(
             imageVector = Icons.Filled.ArrowBack,
             contentDescription = null,
