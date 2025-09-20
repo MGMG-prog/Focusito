@@ -19,11 +19,13 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
 
 
 @Composable
-fun poemas() {
+fun poemas(navController: NavController) {
     Box(modifier = Modifier) {
         Image(
             painter = painterResource(id = R.drawable.fondocueno),
@@ -31,32 +33,26 @@ fun poemas() {
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
-        ima()
-    }
-}
-
-@Composable
-fun ima() {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight(1f),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Image(
-            painter = painterResource(id = R.drawable.fabulas),
-            contentDescription = "icon",
+        Column(
             modifier = Modifier
-                .size(280.dp)
-        )
-
-        Image(
-            painter = painterResource(id = R.drawable.poemas),
-            contentDescription = "icon",
-            modifier = Modifier
-                .size(280.dp)
-        )
+                .fillMaxWidth()
+                .fillMaxHeight(1f),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.fabulas),
+                contentDescription = "icon",
+                modifier = Modifier
+                    .size(280.dp)
+            )
+            Image(
+                painter = painterResource(id = R.drawable.poemas),
+                contentDescription = "icon",
+                modifier = Modifier
+                    .size(280.dp)
+            )
+        }
     }
 }
 
@@ -67,5 +63,5 @@ fun ima() {
 )
 @Composable
 fun po() {
-    poemas()
+    poemas(navController = rememberNavController())
 }

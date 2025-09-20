@@ -67,8 +67,6 @@ fun puntos (navController: NavController, ) {
     }
 }
 
-
-
 @Preview(
     showBackground = true,
     name = "Login Preview"

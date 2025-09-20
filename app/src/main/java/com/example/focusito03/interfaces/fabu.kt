@@ -22,10 +22,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
 
 @Composable
-fun fabut() {
+fun fabut(navController: NavController) {
     Image(
         painter = painterResource(id = R.drawable.fonfofabu),
         contentDescription = null,
@@ -46,11 +48,6 @@ fun fabut() {
             modifier = Modifier.size(50.dp)
         )
      }
-    bum()
-}
-
-@Composable
-fun bum() {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -77,5 +74,5 @@ fun bum() {
 @Preview(showBackground = true, name = "Preview")
 @Composable
 fun fab() {
-    fabut()
+    fabut(navController = rememberNavController())
 }

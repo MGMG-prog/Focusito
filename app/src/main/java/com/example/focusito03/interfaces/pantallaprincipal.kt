@@ -28,7 +28,6 @@ fun Pantallainicio(navController: NavController,
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
-
         Column(
             modifier = Modifier
                 .fillMaxWidth()

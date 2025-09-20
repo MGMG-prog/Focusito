@@ -126,7 +126,6 @@ fun registro(navController: NavController,
             modifier = Modifier.run { size(width = 200.dp, height = 60.dp) },
             contentPadding = PaddingValues(horizontal = 10.dp, vertical =20.dp),
             colors =  ButtonDefaults.buttonColors(Color(0xFF051d40)),
-
             ) {
             Text(
                 text = "Crear cuenta",

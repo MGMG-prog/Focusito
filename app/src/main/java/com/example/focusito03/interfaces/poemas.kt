@@ -23,11 +23,13 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
 
 
 @Composable
-fun poema() {
+fun poema(navController: NavController) {
     Box(modifier = Modifier) {
         Image(
             painter = painterResource(id = R.drawable.fondopoema),
@@ -41,31 +43,26 @@ fun poema() {
             tint = Color.Black,
             modifier = Modifier.size(50.dp)
         )
-        nom()
-    }
-}
-
-@Composable
-fun nom() {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight(1f),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Image(
-            painter = painterResource(id = R.drawable.po1),
-            contentDescription = "icon",
+        Column(
             modifier = Modifier
-                .size(280.dp)
-        )
-        Image(
-            painter = painterResource(id = R.drawable.po2),
-            contentDescription = "icon",
-            modifier = Modifier
-                .size(280.dp)
-        )
+                .fillMaxWidth()
+                .fillMaxHeight(1f),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.po1),
+                contentDescription = "icon",
+                modifier = Modifier
+                    .size(280.dp)
+            )
+            Image(
+                painter = painterResource(id = R.drawable.po2),
+                contentDescription = "icon",
+                modifier = Modifier
+                    .size(280.dp)
+            )
+        }
     }
 }
 
@@ -76,5 +73,5 @@ fun nom() {
 )
 @Composable
 fun der() {
-    poema()
+    poema(navController = rememberNavController())
 }

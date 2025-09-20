@@ -29,10 +29,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
 
 @Composable
-fun because() {
+fun because(navController: NavController) {
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.quiz1),
@@ -89,5 +91,5 @@ fun yesterday(){
 @Preview(showBackground = true, name = "Preview")
 @Composable
 fun yes() {
-    because()
+    because(navController = rememberNavController())
 }

@@ -1,14 +1,11 @@
 package com.example.focusito03.interfaces
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -50,11 +47,14 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
+import com.example.focusito03.navegacion.Screen
 import androidx.compose.ui.res.painterResource as painterResource1
 
 @Composable
-fun estud() {
+fun estud(navController: NavController) {
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.fondoactividades),
@@ -78,14 +78,6 @@ fun estud() {
                 .size(50.dp)
                 .align(Alignment.TopEnd)
         )
-        ActividadesScreen() { }
-    }
-}
-
-@Composable
-fun ActividadesScreen(
-    onAgregarClick: () -> Unit
-) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -96,25 +88,30 @@ fun ActividadesScreen(
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
                 modifier = Modifier.fillMaxWidth(),
-                contentPadding = PaddingValues(8.dp),
+                contentPadding = PaddingValues(12.dp),
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                items(listOf(
-                    R.drawable.preguntas,
-                    R.drawable.juegosdecartas,
-                    R.drawable.cuentos,
-                    R.drawable.ahorcado
-                )) { imagen ->
+                items(
+                    listOf(
+                        R.drawable.preguntas,
+                        R.drawable.juegosdecartas,
+                        R.drawable.cuentos,
+                        R.drawable.ahorcado
+                    )
+                ) { imagen ->
                     Card(
                         modifier = Modifier
                             .aspectRatio(1f)
-                            .clickable { /* acción de la actividad */ },
+                            .clickable {  },
                         shape = RoundedCornerShape(16.dp),
-                        elevation = CardDefaults.cardElevation(6.dp)
+                        elevation = CardDefaults.cardElevation(6.dp),
+                        colors = CardDefaults.cardColors(
+                            containerColor = Color(0xFFffffff)
+                        )
                     ) {
                         Image(
-                            painter = painterResource(id = imagen),
+                            painter = painterResource(id = imagen as Int),
                             contentDescription = null,
                             modifier = Modifier.fillMaxSize(),
                             contentScale = ContentScale.Crop
@@ -122,19 +119,9 @@ fun ActividadesScreen(
                     }
                 }
             }
-
-            Spacer(modifier = Modifier.height(30.dp))
-
-            // Botón agregar actividad
-            Button(
-                onClick = onAgregarClick,
-                shape = RoundedCornerShape(70),
-                colors = ButtonDefaults.buttonColors(containerColor = Color.White)
-            ) {
-                Text("AGREGAR ACTIVIDAD", color = Color.Black)
-            }
         }
     }
+}
 
 
 
@@ -144,5 +131,5 @@ fun ActividadesScreen(
 )
 @Composable
 fun est() {
-    estud()
+    estud(navController = rememberNavController())
 }

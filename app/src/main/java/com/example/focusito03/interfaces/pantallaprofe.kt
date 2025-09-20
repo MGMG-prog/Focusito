@@ -42,10 +42,11 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
+import com.example.focusito03.navegacion.Screen
 import androidx.compose.ui.res.painterResource as painterResource1
 
 @Composable
-fun profe (navController: NavController,) {
+fun profe (navController: NavController) {
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.fondo),
@@ -80,7 +81,7 @@ fun profe (navController: NavController,) {
 
             Spacer(modifier = Modifier.height(300.dp))
             OutlinedButton(
-                onClick = { },
+                {navController.navigate(Screen.actividades.route)},
                 shape = RoundedCornerShape(70.dp),
                 modifier = Modifier
                     .fillMaxWidth(0.8f)
@@ -94,6 +95,7 @@ fun profe (navController: NavController,) {
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Start
                 ) {
+                    {navController.navigate(Screen.actividades.route)}
                     Image(
                         painter = painterResource(id = R.drawable.acti),
                         contentDescription = "icon",
@@ -110,7 +112,7 @@ fun profe (navController: NavController,) {
             }
             Spacer(modifier = Modifier.height(30.dp))
             OutlinedButton(
-                onClick = { },
+                {navController.navigate(Screen.actividades.route)},
                 shape = RoundedCornerShape(70.dp),
                 modifier = Modifier
                     .fillMaxWidth(0.8f)

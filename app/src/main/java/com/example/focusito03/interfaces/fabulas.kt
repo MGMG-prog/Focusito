@@ -21,10 +21,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
 
 @Composable
-fun fabula() {
+fun fabula(navController: NavController) {
         Image(
             painter = painterResource(id = R.drawable.fondofabulas),
             contentDescription = null,
@@ -37,11 +39,6 @@ fun fabula() {
         tint = Color.Black,
         modifier = Modifier.size(50.dp)
     )
-    im()
-}
-
-@Composable
-fun im() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -73,5 +70,5 @@ fun im() {
 @Preview(showBackground = true, name = "Preview")
 @Composable
 fun fa() {
-    fabula()
+    fabula(navController = rememberNavController())
 }

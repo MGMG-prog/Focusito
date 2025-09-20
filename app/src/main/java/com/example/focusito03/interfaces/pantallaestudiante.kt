@@ -43,10 +43,11 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
+import com.example.focusito03.navegacion.Screen
 import androidx.compose.ui.res.painterResource as painterResource1
 
 @Composable
-fun estu (navController: NavController,) {
+fun estu (navController: NavController) {
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.pantaestudieante),
@@ -81,7 +82,7 @@ fun estu (navController: NavController,) {
 
             Spacer(modifier = Modifier.height(300.dp))
             OutlinedButton(
-                onClick = { },
+                {navController.navigate(Screen.actividades.route)},
                 shape = RoundedCornerShape(70.dp),
                 modifier = Modifier
                     .fillMaxWidth(0.8f)
@@ -111,7 +112,7 @@ fun estu (navController: NavController,) {
             }
             Spacer(modifier = Modifier.height(30.dp))
             OutlinedButton(
-                onClick = { },
+                {navController.navigate(Screen.puntos.route)},
                 shape = RoundedCornerShape(70.dp),
                 modifier = Modifier
                     .fillMaxWidth(0.8f)
@@ -134,7 +135,7 @@ fun estu (navController: NavController,) {
                     )
                     Spacer(modifier = Modifier.width(12.dp))
                     Text(
-                        text = "Notas",
+                        text = "Puntos",
                         fontSize = 20.sp,
                         color = Color.Black
                     )

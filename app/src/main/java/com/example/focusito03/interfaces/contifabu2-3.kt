@@ -1,6 +1,5 @@
 package com.example.focusito03.interfaces
 
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,7 +13,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,14 +29,14 @@ import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
 
 @Composable
-fun tun(navController: NavController) {
+fun too(navController: NavController) {
     Image(
-        painter = painterResource(id = R.drawable.fonfofabu3),
+        painter = painterResource(id = R.drawable.fondofabu2),
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier.fillMaxSize()
     )
-    Row (modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
+    Row (modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
         Icon(
             imageVector = Icons.Filled.ArrowBack,
             contentDescription = null,
@@ -49,23 +50,22 @@ fun tun(navController: NavController) {
             modifier = Modifier.size(50.dp)
         )
     }
-
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight(1f),
         horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-        Spacer(modifier = Modifier.height(190.dp))
+    ) {
+        Spacer(modifier = Modifier.height(180.dp))
         Image(
-            painter = painterResource(id = R.drawable.op),
+            painter = painterResource(id = R.drawable.zop),
             contentDescription = "icon",
             modifier = Modifier
-                .size(180.dp)
+                .size(170.dp)
         )
         Spacer(modifier = Modifier.height(90.dp))
         Image(
-            painter = painterResource(id = R.drawable.yu),
+            painter = painterResource(id = R.drawable.conti3),
             contentDescription = "icon",
             modifier = Modifier
                 .size(800.dp)
@@ -75,6 +75,7 @@ fun tun(navController: NavController) {
 
 @Preview(showBackground = true, name = "Preview")
 @Composable
-fun mot() {
-    tun(navController = rememberNavController())
+fun yeu() {
+    too(navController = rememberNavController())
 }
+

@@ -116,20 +116,12 @@ fun Login(navController: NavController,
                     unfocusedContainerColor = Color.White
                 )
             )
-            TextButton(
-                onClick = {}
-            ) {
-                Text(
-                    text = "¿Olvidaste tu contraseña?",
-                    fontSize = 20.sp,
-                    color = Color(0xFF051d40)
-                )
-            }
+            Spacer(modifier = Modifier.height(50.dp))
             Button(
-                {navController.navigate(Screen.registrate.route)},
+                {navController.navigate(Screen.roles.route)},
                 modifier = Modifier.run { size(width = 200.dp, height = 60.dp) },
                 contentPadding = PaddingValues(horizontal = 10.dp, vertical = 20.dp),
-                colors = ButtonDefaults.buttonColors(Color(0xFF051d40)),
+                colors = ButtonDefaults.buttonColors(Color(0xFF051d40))
             ) {
                 Text(
                     text = "Iniciar sesión",
