@@ -1,6 +1,7 @@
 package com.example.focusito03.interfaces
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -39,6 +40,7 @@ fun fabula(navController: NavController) {
         contentDescription = null,
         tint = Color.Black,
         modifier = Modifier.size(50.dp)
+            .clickable { navController.popBackStack() }
     )
     Column(
         modifier = Modifier
@@ -47,33 +49,27 @@ fun fabula(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Row {
-            { navController.navigate(Screen.fabula1.route) }
-            Image(
+        Image(
                 painter = painterResource(id = R.drawable.cierbo),
                 contentDescription = "icon",
                 modifier = Modifier
                     .size(210.dp)
-            )
-        }
-        Row {
-            {navController.navigate(Screen.fabula2.route)}
+                    .clickable { navController.navigate(Screen.fabula1.route) }
+        )
         Image(
             painter = painterResource(id = R.drawable.zorr),
             contentDescription = "icon",
             modifier = Modifier
                 .size(210.dp)
+                .clickable { navController.navigate(Screen.fabula2.route) }
         )
-    }
-        Row {
-            {navController.navigate(Screen.fabula3.route)}
-            Image(
+        Image(
                 painter = painterResource(id = R.drawable.leon),
                 contentDescription = "icon",
                 modifier = Modifier
                     .size(210.dp)
-            )
-        }
+                    .clickable { navController.navigate(Screen.fabula3.route) }
+        )
     }
 }
 

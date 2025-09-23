@@ -1,6 +1,7 @@
 package com.example.focusito03.interfaces
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -27,7 +28,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
 import com.example.focusito03.navegacion.Screen
 
-@Composable
+@Composable 
 fun fabut(navController: NavController) {
     Image(
         painter = painterResource(id = R.drawable.fonfofabu),
@@ -36,18 +37,19 @@ fun fabut(navController: NavController) {
         modifier = Modifier.fillMaxSize()
     )
     Row (modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
-        {navController.navigate(Screen.fabula2.route)}
         Icon(
             imageVector = Icons.Filled.ArrowBack,
             contentDescription = null,
             tint = Color.Black,
             modifier = Modifier.size(50.dp)
+                .clickable { navController.popBackStack() }
         )
         Icon(
             imageVector = Icons.Filled.ArrowForward,
             contentDescription = null,
             tint = Color.Black,
             modifier = Modifier.size(50.dp)
+                .clickable { navController.navigate(Screen.fabulas.route) }
         )
      }
         Column(

@@ -51,6 +51,7 @@ fun roles(navController: NavController,
             modifier = Modifier
                 .size(50.dp)
                 .align(Alignment.TopStart)
+                .clickable { navController.popBackStack() }
         )
         Icon(
             painter = painterResource(id = R.drawable.sonido),

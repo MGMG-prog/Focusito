@@ -3,6 +3,7 @@ package com.example.focusito03.interfaces
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -61,6 +62,7 @@ fun profe (navController: NavController) {
             modifier = Modifier
                 .size(50.dp)
                 .align(Alignment.TopStart)
+                .clickable { navController.popBackStack() }
         )
         Icon(
             painter = painterResource(id = R.drawable.sonido),

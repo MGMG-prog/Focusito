@@ -2,6 +2,7 @@ package com.example.focusito03.interfaces
 
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -37,18 +38,19 @@ fun tuntun(navController: NavController) {
         modifier = Modifier.fillMaxSize()
     )
     Row (modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
-        {navController.navigate(Screen.contifabula2.route)}
         Icon(
             imageVector = Icons.Filled.ArrowBack,
             contentDescription = null,
             tint = Color.Black,
             modifier = Modifier.size(50.dp)
+                .clickable { navController.popBackStack() }
         )
         Icon(
             imageVector = Icons.Filled.ArrowForward,
             contentDescription = null,
             tint = Color.Black,
             modifier = Modifier.size(50.dp)
+                .clickable { navController.navigate(Screen.contifabula.route) }
         )
     }
     Column(

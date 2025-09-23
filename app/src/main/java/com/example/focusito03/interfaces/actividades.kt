@@ -69,6 +69,7 @@ fun estud(navController: NavController) {
             modifier = Modifier
                 .size(50.dp)
                 .align(Alignment.TopStart)
+                .clickable { navController.popBackStack() }
         )
         Icon(
             painter = painterResource(id = R.drawable.sonido),
@@ -92,18 +93,17 @@ fun estud(navController: NavController) {
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                items(
-                    listOf(
-                        R.drawable.preguntas,
-                        R.drawable.juegosdecartas,
-                        R.drawable.cuentos,
-                        R.drawable.ahorcado
-                    )
-                ) { imagen ->
+                val items = listOf(
+                    R.drawable.preguntas to Screen.fabulasypoemas.route,
+                    R.drawable.juegosdecartas to Screen.roles.route,
+                    R.drawable.cuentos to Screen.fabulasypoemas.route,
+                    R.drawable.ahorcado to Screen.poemas.route
+                )
+                items(items) { (imagen, ruta) ->
                     Card(
                         modifier = Modifier
                             .aspectRatio(1f)
-                            .clickable {{navController.navigate(Screen.fabulasypoemas.route)} },
+                            .clickable { navController.navigate(ruta) },
                         shape = RoundedCornerShape(16.dp),
                         elevation = CardDefaults.cardElevation(6.dp),
                         colors = CardDefaults.cardColors(
@@ -111,13 +111,14 @@ fun estud(navController: NavController) {
                         )
                     ) {
                         Image(
-                            painter = painterResource(id = imagen as Int),
+                            painter = painterResource(id = imagen),
                             contentDescription = null,
                             modifier = Modifier.fillMaxSize(),
                             contentScale = ContentScale.Crop
                         )
                     }
                 }
+
             }
         }
     }

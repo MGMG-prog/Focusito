@@ -1,6 +1,7 @@
 package com.example.focusito03.interfaces
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
+import com.example.focusito03.navegacion.Screen
 
 
 @Composable
@@ -42,6 +44,7 @@ fun poema(navController: NavController) {
             contentDescription = null,
             tint = Color.Black,
             modifier = Modifier.size(50.dp)
+                .clickable { navController.popBackStack() }
         )
         Column(
             modifier = Modifier
@@ -55,12 +58,14 @@ fun poema(navController: NavController) {
                 contentDescription = "icon",
                 modifier = Modifier
                     .size(280.dp)
+                    .clickable { navController.navigate(Screen.poema1.route) }
             )
             Image(
                 painter = painterResource(id = R.drawable.po2),
                 contentDescription = "icon",
                 modifier = Modifier
                     .size(280.dp)
+                    .clickable { navController.navigate(Screen.poema2.route) }
             )
         }
     }
