@@ -1,6 +1,7 @@
 package com.example.focusito03.interfaces
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -41,6 +42,7 @@ fun you(navController: NavController) {
             tint = Color.Yellow,
             modifier = Modifier
                 .size(50.dp)
+                .clickable { navController.popBackStack() }
         )
         Icon(
             painter = painterResource(id = R.drawable.sonido),

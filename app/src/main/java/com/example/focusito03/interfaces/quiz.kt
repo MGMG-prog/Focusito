@@ -2,6 +2,7 @@ package com.example.focusito03.interfaces
 
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -49,6 +50,7 @@ fun because(navController: NavController) {
             modifier = Modifier
                 .size(50.dp)
                 .align(Alignment.TopStart)
+                .clickable { navController.popBackStack() }
         )
         Icon(
             painter = painterResource(id = R.drawable.sonido),
@@ -58,33 +60,30 @@ fun because(navController: NavController) {
                 .size(50.dp)
                 .align(Alignment.TopEnd)
         )
-        yesterday()
-    }
-}
-@Composable
-fun yesterday(){
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Spacer(modifier = Modifier.width(80.dp))
-        Spacer(modifier = Modifier.height(650.dp))
-        Button(
-            onClick = { },
+        Column(
             modifier = Modifier
-                .width(140.dp)
-                .height(45.dp),
-            colors = ButtonDefaults.buttonColors(Color(0xFFc3dce5))
+                .fillMaxWidth()
+                .fillMaxHeight(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
-            Icon(
-                imageVector = Icons.Filled.ArrowForward,
-                contentDescription = null,
-                tint = Color.Yellow,
-                modifier = Modifier.size(30.dp)
-            )
+            Spacer(modifier = Modifier.width(80.dp))
+            Spacer(modifier = Modifier.height(650.dp))
+            Button(
+                onClick = { },
+                modifier = Modifier
+                    .width(140.dp)
+                    .height(45.dp),
+                colors = ButtonDefaults.buttonColors(Color(0xFFc3dce5))
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.ArrowForward,
+                    contentDescription = null,
+                    tint = Color.Yellow,
+                    modifier = Modifier.size(30.dp)
+                        .clickable { navController.popBackStack() }
+                )
+            }
         }
     }
 }
