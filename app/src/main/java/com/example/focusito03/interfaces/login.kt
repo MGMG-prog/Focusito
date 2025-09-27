@@ -42,15 +42,17 @@ import com.example.focusito03.R
 import com.example.focusito03.navegacion.Screen
 
 @Composable
-fun Login(navController: NavController,
-) {
+fun Login(navController: NavController) {
+
     Box(modifier = Modifier) {
+
         Image(
             painter = painterResource(id = R.drawable.fonfodelogin),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
+
         Column(
             modifier = Modifier.fillMaxWidth()
                 .fillMaxHeight(1f),
@@ -67,6 +69,7 @@ fun Login(navController: NavController,
                     .width(400.dp),
                 tint = Color.Unspecified,
             )
+
             TextField(
                 value = correo,
                 onValueChange = { correo = it },
@@ -93,7 +96,9 @@ fun Login(navController: NavController,
                     unfocusedContainerColor = Color.White
                 )
             )
+
             Spacer(modifier = Modifier.height(10.dp))
+
             TextField(
                 value = contrasenia,
                 onValueChange = { contrasenia = it },
@@ -116,7 +121,9 @@ fun Login(navController: NavController,
                     unfocusedContainerColor = Color.White
                 )
             )
+
             Spacer(modifier = Modifier.height(50.dp))
+
             Button(
                 {navController.navigate(Screen.roles.route)},
                 modifier = Modifier.run { size(width = 200.dp, height = 60.dp) },
@@ -129,6 +136,7 @@ fun Login(navController: NavController,
                     color = Color.White
                 )
             }
+
             TextButton(
                 onClick = {}
             ) {
@@ -138,6 +146,7 @@ fun Login(navController: NavController,
                     fontSize = 20.sp
                 )
             }
+
             TextButton(
                 {navController.navigate(Screen.registrate.route)}
             ) {
@@ -146,6 +155,7 @@ fun Login(navController: NavController,
                     fontSize = 20.sp
                 )
             }
+
         }
     }
 }
