@@ -1,6 +1,5 @@
 package com.example.focusito03.interfaces
 
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -34,10 +33,10 @@ import com.example.focusito03.R
 
 
 @Composable
-fun qu(navController: NavController,
+fun qut(navController: NavController,
 ) {
     Image(
-        painter = painterResource(id = R.drawable.p),
+        painter = painterResource(id = R.drawable.m),
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier.fillMaxSize()
@@ -59,17 +58,17 @@ fun qu(navController: NavController,
                 .size(50.dp)
         )
     }
-    mo()
-    OpcionBoton(texto = "A. Para obtener información o aclarar dudas sobre un tema específico.",
+    moy()
+    OpcionBotonu(texto = "A. En la letra I.",
         onClick = { /* acción al hacer clic */ })
-    OpcionBoto(texto = "B. Para decorar un cuaderno con palabras bonitas.",
+    OpcionBotou(texto = "B. En la letra A.",
         onClick = { /* acción al hacer clic */ })
-    OpcionBot(texto = "C. Para desviar la atención.as.",
+    OpcionBotu(texto = "C. En la letra O.",
         onClick = { /* acción al hacer clic */ })
 
 }
 @Composable
-fun mo() {
+fun moy() {
     Column (
         modifier = Modifier
             .padding(top = 350.dp)
@@ -88,7 +87,7 @@ fun mo() {
 }
 
 @Composable
-fun OpcionBoton(texto: String, onClick: () -> Unit) {
+fun OpcionBotonu(texto: String, onClick: () -> Unit) {
     Button(
         onClick = onClick,
         modifier = Modifier
@@ -114,7 +113,7 @@ fun OpcionBoton(texto: String, onClick: () -> Unit) {
 }
 
 @Composable
-fun OpcionBoto(texto: String, onClick: () -> Unit) {
+fun OpcionBotou(texto: String, onClick: () -> Unit) {
     Button(
         onClick = onClick,
         modifier = Modifier
@@ -140,7 +139,7 @@ fun OpcionBoto(texto: String, onClick: () -> Unit) {
 }
 
 @Composable
-fun OpcionBot(texto: String, onClick: () -> Unit) {
+fun OpcionBotu(texto: String, onClick: () -> Unit) {
     Button(
         onClick = onClick,
         modifier = Modifier
@@ -167,6 +166,6 @@ fun OpcionBot(texto: String, onClick: () -> Unit) {
 
 @Preview(showBackground = true, name = "Preview")
 @Composable
-fun o() {
-    qu(navController = rememberNavController())
+fun on() {
+    qut(navController = rememberNavController())
 }
