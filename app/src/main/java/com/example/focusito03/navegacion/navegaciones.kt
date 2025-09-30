@@ -2,6 +2,7 @@ package com.example.focusito03.navegacion
 
 import Pantallainicio
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -28,10 +29,10 @@ import com.example.focusito03.interfaces.tuntun
 import com.example.focusito03.interfaces.you
 
 @Composable
-fun tress() {
+fun tress(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = Screen.inicio.route) {
+    NavHost(navController = navController, startDestination = Screen.inicio.route,modifier = modifier) {
 
         composable(Screen.inicio.route) { Pantallainicio(navController) }
         composable(Screen.login.route) { Login(navController) }

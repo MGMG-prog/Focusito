@@ -59,14 +59,9 @@ fun qut(navController: NavController,
         )
     }
     moy()
-    OpcionBotonu(texto = "A. En la letra I.",
-        onClick = { /* acción al hacer clic */ })
-    OpcionBotou(texto = "B. En la letra A.",
-        onClick = { /* acción al hacer clic */ })
-    OpcionBotu(texto = "C. En la letra O.",
-        onClick = { /* acción al hacer clic */ })
-
+    OpcionesBotones()
 }
+
 @Composable
 fun moy() {
     Column (
@@ -87,9 +82,9 @@ fun moy() {
 }
 
 @Composable
-fun OpcionBotonu(texto: String, onClick: () -> Unit) {
+fun OpcionesBotones() {
     Button(
-        onClick = onClick,
+        onClick = { /* acción al hacer clic */ },
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 410.dp)
@@ -105,17 +100,14 @@ fun OpcionBotonu(texto: String, onClick: () -> Unit) {
         )
     ) {
         Text(
-            text = texto,
+            text = "A. En la letra I.",
             color = Color.Black,
             fontSize = 16.sp
         )
     }
-}
 
-@Composable
-fun OpcionBotou(texto: String, onClick: () -> Unit) {
     Button(
-        onClick = onClick,
+        onClick = { /* acción al hacer clic */ },
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 520.dp)
@@ -131,17 +123,14 @@ fun OpcionBotou(texto: String, onClick: () -> Unit) {
         )
     ) {
         Text(
-            text = texto,
+            text = "B. En la letra A.",
             color = Color.Black,
             fontSize = 16.sp
         )
     }
-}
 
-@Composable
-fun OpcionBotu(texto: String, onClick: () -> Unit) {
     Button(
-        onClick = onClick,
+        onClick = { /* acción al hacer clic */ },
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 600.dp)
@@ -157,7 +146,7 @@ fun OpcionBotu(texto: String, onClick: () -> Unit) {
         )
     ) {
         Text(
-            text = texto,
+            text = "C. En la letra O.",
             color = Color.Black,
             fontSize = 16.sp
         )

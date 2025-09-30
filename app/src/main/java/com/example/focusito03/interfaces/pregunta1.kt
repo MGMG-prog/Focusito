@@ -42,7 +42,7 @@ fun qu(navController: NavController,
         contentScale = ContentScale.Crop,
         modifier = Modifier.fillMaxSize()
     )
-    Row (modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
+    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
         Icon(
             imageVector = Icons.Filled.ArrowBack,
             contentDescription = null,
@@ -60,112 +60,100 @@ fun qu(navController: NavController,
         )
     }
     mo()
-    OpcionBoton(texto = "A. Para obtener información o aclarar dudas sobre un tema específico.",
-        onClick = { /* acción al hacer clic */ })
-    OpcionBoto(texto = "B. Para decorar un cuaderno con palabras bonitas.",
-        onClick = { /* acción al hacer clic */ })
-    OpcionBot(texto = "C. Para desviar la atención.as.",
-        onClick = { /* acción al hacer clic */ })
-
+    Opciones()
 }
-@Composable
-fun mo() {
-    Column (
-        modifier = Modifier
-            .padding(top = 350.dp)
-            .padding(horizontal = 32.dp)
-            .fillMaxWidth()
-            .height(350.dp)
-            .background(
-                color = Color(0x80FFFFFF),
-                shape = RoundedCornerShape(16.dp)
+    @Composable
+    fun mo() {
+        Column(
+            modifier = Modifier
+                .padding(top = 350.dp)
+                .padding(horizontal = 32.dp)
+                .fillMaxWidth()
+                .height(350.dp)
+                .background(
+                    color = Color(0x80FFFFFF),
+                    shape = RoundedCornerShape(16.dp)
+                ),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+
+        ) {
+        }
+    }
+    @Composable
+    fun Opciones() {
+        Button(
+            onClick = { /* acción al hacer clic */ },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 410.dp)
+                .padding(horizontal = 52.dp)
+                .padding(vertical = 6.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0x80535353)
             ),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+            shape = RoundedCornerShape(16.dp),
+            elevation = ButtonDefaults.buttonElevation(
+                defaultElevation = 4.dp,
+                pressedElevation = 8.dp
+            )
+        ) {
+            Text(
+                text = "A. Para obtener información o aclarar dudas sobre un tema específico.",
+                color = Color.Black,
+                fontSize = 16.sp
+            )
+        }
 
-    ){
+        Button(
+            onClick = { /* acción al hacer clic */ },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 520.dp)
+                .padding(horizontal = 52.dp)
+                .padding(vertical = 6.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0x80535353)
+            ),
+            shape = RoundedCornerShape(16.dp),
+            elevation = ButtonDefaults.buttonElevation(
+                defaultElevation = 4.dp,
+                pressedElevation = 8.dp
+            )
+        ) {
+            Text(
+                text = "B. Para decorar un cuaderno con palabras bonitas.",
+                color = Color.Black,
+                fontSize = 16.sp
+            )
+        }
+
+        Button(
+            onClick = { /* acción al hacer clic */ },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 600.dp)
+                .padding(horizontal = 52.dp)
+                .padding(vertical = 6.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0x80535353)
+            ),
+            shape = RoundedCornerShape(16.dp),
+            elevation = ButtonDefaults.buttonElevation(
+                defaultElevation = 4.dp,
+                pressedElevation = 8.dp
+            )
+        ) {
+            Text(
+                text = "C. Para desviar la atención.",
+                color = Color.Black,
+                fontSize = 16.sp
+            )
+        }
     }
-}
 
-@Composable
-fun OpcionBoton(texto: String, onClick: () -> Unit) {
-    Button(
-        onClick = onClick,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 410.dp)
-            .padding(horizontal = 52.dp)
-            .padding(vertical = 6.dp),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0x80535353)
-        ),
-        shape = RoundedCornerShape(16.dp),
-        elevation = ButtonDefaults.buttonElevation(
-            defaultElevation = 4.dp,
-            pressedElevation = 8.dp
-        )
-    ) {
-        Text(
-            text = texto,
-            color = Color.Black,
-            fontSize = 16.sp
-        )
-    }
-}
 
-@Composable
-fun OpcionBoto(texto: String, onClick: () -> Unit) {
-    Button(
-        onClick = onClick,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 520.dp)
-            .padding(horizontal = 52.dp)
-            .padding(vertical = 6.dp),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0x80535353)
-        ),
-        shape = RoundedCornerShape(16.dp),
-        elevation = ButtonDefaults.buttonElevation(
-            defaultElevation = 4.dp,
-            pressedElevation = 8.dp
-        )
-    ) {
-        Text(
-            text = texto,
-            color = Color.Black,
-            fontSize = 16.sp
-        )
-    }
-}
-
-@Composable
-fun OpcionBot(texto: String, onClick: () -> Unit) {
-    Button(
-        onClick = onClick,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 600.dp)
-            .padding(horizontal = 52.dp)
-            .padding(vertical = 6.dp),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0x80535353)
-        ),
-        shape = RoundedCornerShape(16.dp),
-        elevation = ButtonDefaults.buttonElevation(
-            defaultElevation = 4.dp,
-            pressedElevation = 8.dp
-        )
-    ) {
-        Text(
-            text = texto,
-            color = Color.Black,
-            fontSize = 16.sp
-        )
-    }
-}
-
-@Preview(showBackground = true, name = "Preview")
+    @Preview(showBackground = true, name = "Preview")
 @Composable
 fun o() {
     qu(navController = rememberNavController())

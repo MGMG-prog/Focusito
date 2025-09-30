@@ -22,7 +22,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             FOCUSITO03Theme {
                 val navController = rememberNavController()
-                tress()
+                Scaffold { innerPadding ->
+                    tress(modifier = Modifier.padding(innerPadding))
+                }
             }
 
         }
