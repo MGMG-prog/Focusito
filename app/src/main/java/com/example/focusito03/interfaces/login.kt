@@ -1,5 +1,6 @@
 package com.example.focusito03.interfaces
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
@@ -36,13 +37,18 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
 import com.example.focusito03.navegacion.Screen
+import com.example.focusito03.view.model.LoginViewModel
 
 @Composable
-fun Login(navController: NavController) {
+fun Login(
+    navController: NavController,
+    viewModel: LoginViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+) {
 
     Box(modifier = Modifier) {
 
@@ -125,7 +131,11 @@ fun Login(navController: NavController) {
             Spacer(modifier = Modifier.height(50.dp))
 
             Button(
-                {navController.navigate(Screen.roles.route)},
+                {
+                    viewModel.signInWithEmailAndPassword(correo, contrasenia){
+                        navController.navigate(Screen.roles.route)
+                    }
+                },
                 modifier = Modifier.run { size(width = 200.dp, height = 60.dp) },
                 contentPadding = PaddingValues(horizontal = 10.dp, vertical = 20.dp),
                 colors = ButtonDefaults.buttonColors(Color(0xFF051d40))
