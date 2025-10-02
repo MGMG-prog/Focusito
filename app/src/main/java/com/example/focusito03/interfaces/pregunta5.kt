@@ -7,13 +7,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -33,18 +31,17 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
-import com.example.focusito03.navegacion.Screen
 
 @Composable
-fun quy(navController: NavController,
+fun pregunta5(navController: NavController,
 ) {
     Image(
-        painter = painterResource(id = R.drawable.quefuncion),
+        painter = painterResource(id = R.drawable.pregunta5),
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier.fillMaxSize()
     )
-    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+    Row (modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
         Icon(
             imageVector = Icons.Filled.ArrowBack,
             contentDescription = null,
@@ -61,12 +58,13 @@ fun quy(navController: NavController,
                 .size(50.dp)
         )
     }
-    motm()
-    Opcionesm()
+    preg5()
+    Op5()
 }
+
 @Composable
-fun motm() {
-    Column(
+fun preg5() {
+    Column (
         modifier = Modifier
             .padding(top = 350.dp)
             .padding(horizontal = 32.dp)
@@ -79,11 +77,12 @@ fun motm() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
 
-    ) {
+    ){
     }
 }
+
 @Composable
-fun Opcionesm() {
+fun Op5() {
     Button(
         onClick = { /* acción al hacer clic */ },
         modifier = Modifier
@@ -101,7 +100,7 @@ fun Opcionesm() {
         )
     ) {
         Text(
-            text = "A. Decorar la oración",
+            text = "A. aver.",
             color = Color.Black,
             fontSize = 16.sp
         )
@@ -111,7 +110,7 @@ fun Opcionesm() {
         onClick = { /* acción al hacer clic */ },
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 509.dp)
+            .padding(top = 508.dp)
             .padding(horizontal = 52.dp)
             .padding(vertical = 6.dp),
         colors = ButtonDefaults.buttonColors(
@@ -124,7 +123,7 @@ fun Opcionesm() {
         )
     ) {
         Text(
-            text = "B. Enfatizar la oración.",
+            text = "B. Aber.",
             color = Color.Black,
             fontSize = 16.sp
         )
@@ -147,7 +146,7 @@ fun Opcionesm() {
         )
     ) {
         Text(
-            text = "C. Indicar una acción,estado o proceso.",
+            text = "C. Haber.",
             color = Color.Black,
             fontSize = 16.sp
         )
@@ -175,9 +174,8 @@ fun Opcionesm() {
     }
 }
 
-
 @Preview(showBackground = true, name = "Preview")
 @Composable
-fun ou() {
-    quy(navController = rememberNavController())
+fun onyu5() {
+    pregunta5(navController = rememberNavController())
 }

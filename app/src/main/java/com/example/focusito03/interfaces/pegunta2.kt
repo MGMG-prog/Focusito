@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -30,7 +31,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
-
 
 @Composable
 fun qut(navController: NavController,
@@ -110,7 +110,7 @@ fun OpcionesBotones() {
         onClick = { /* acción al hacer clic */ },
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 520.dp)
+            .padding(top = 508.dp)
             .padding(horizontal = 52.dp)
             .padding(vertical = 6.dp),
         colors = ButtonDefaults.buttonColors(
@@ -150,6 +150,27 @@ fun OpcionesBotones() {
             color = Color.Black,
             fontSize = 16.sp
         )
+    }
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(bottom = 40.dp),
+        verticalArrangement = Arrangement.Bottom,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(
+            onClick = {},
+            modifier = Modifier.run { size(width = 250.dp, height = 60.dp) },
+            contentPadding = PaddingValues(horizontal = 10.dp, vertical = 20.dp),
+            colors = ButtonDefaults.buttonColors(Color(0xFFc3d9f8)),
+        ) {
+            Text(
+                text = "Siguiente",
+                fontSize = 20
+                    .sp,
+                color = Color.Black
+            )
+        }
     }
 }
 
