@@ -13,20 +13,49 @@ class LoginViewModel: ViewModel() {
     private val auth: FirebaseAuth = Firebase.auth
     private val _loading = MutableLiveData(false)
 
-    fun signInWithEmailAndPassword(email: String, password: String, home: ()-> Unit) = viewModelScope.launch{
+    fun signInWithEmailAndPassword(
+        email: String,
+        password: String,
+        navigate: ()-> Unit
+    ) = viewModelScope.launch {
         try {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                      if(task.isSuccessful){
                         Log.d("Login", "signInWithEmailAndPassword Logueado!")
-                         home()
+                         navigate()
                      } else {
-                         Log.d("Login", "signInWithEmailAndPassword ${task.result.toString()}")
-
+                         Log.d(
+                             "Login",
+                             "signInWithEmailAndPassword ${task.result.toString()}"
+                         )
                      }
                 }
         } catch (ex: Exception) {
             Log.d("Login", "signInWithEmailAndPassword ${ex.message}")
+        }
+    }
+
+    fun createUserWithEmailAndPassword(
+        email: String,
+        password: String,
+        navigate: ()-> Unit)
+    {
+        if (_loading.value == false) {
+            _loading.value = true
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        navigate()
+                    }
+                    else {
+                        Log.d(
+                            "Register",
+                            "createUserWithEmailAndPassword ${task.result.toString()}"
+                        )
+                        _loading.value = false
+                    }
+                }
         }
     }
 }

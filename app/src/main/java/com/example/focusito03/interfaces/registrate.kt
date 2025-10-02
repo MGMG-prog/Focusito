@@ -37,9 +37,12 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
 import com.example.focusito03.navegacion.Screen
+import com.example.focusito03.view.model.LoginViewModel
 
 @Composable
-fun registro(navController: NavController,
+fun registro(
+    navController: NavController,
+    viewModel: LoginViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
 ) {
     Box(modifier = Modifier) {
         Image(
@@ -122,7 +125,12 @@ fun registro(navController: NavController,
         Spacer(modifier = Modifier.height(25.dp))
         val onRegisterClick = null
         Button(
-            {navController.navigate(Screen.roles.route)},
+            {
+                viewModel.createUserWithEmailAndPassword(correo, contrasena) {
+                    navController.navigate(Screen.roles.route)
+                }
+            },
+
             modifier = Modifier.run { size(width = 200.dp, height = 60.dp) },
             contentPadding = PaddingValues(horizontal = 10.dp, vertical =20.dp),
             colors =  ButtonDefaults.buttonColors(Color(0xFF051d40)),
@@ -159,5 +167,5 @@ fun registro(navController: NavController,
 )
 @Composable
 fun rv() {
-registro(navController = rememberNavController())
+    registro(navController = rememberNavController())
 }
