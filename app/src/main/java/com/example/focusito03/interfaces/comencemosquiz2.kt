@@ -22,22 +22,22 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
 
-
 @Composable
-fun quiz2(
+fun mop(
     navController: NavController,
 ) {
     Image(
-        painter = painterResource(id = R.drawable.empesamosquiz2),
+        painter = painterResource(id = R.drawable.comencemosquiz2),
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier.fillMaxSize()
     )
+
     Column(
-            modifier = Modifier
-                .fillMaxSize(),
-    verticalArrangement = Arrangement.Center,
-    horizontalAlignment = Alignment.CenterHorizontally
+        modifier = Modifier
+            .fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Button(
             onClick = {},
@@ -46,7 +46,7 @@ fun quiz2(
             colors = ButtonDefaults.buttonColors(Color(0xFFc3d9f8)),
         ) {
             Text(
-                text = "Lo estoy",
+                text = "Comencemos",
                 fontSize = 35
                     .sp,
                 color = Color.Black
@@ -55,8 +55,9 @@ fun quiz2(
     }
 }
 
+
 @Preview(showBackground = true, name = "Preview")
 @Composable
-fun ony() {
-    quiz2(navController = rememberNavController())
+fun ho() {
+    mop(navController = rememberNavController())
 }

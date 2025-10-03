@@ -58,7 +58,7 @@ fun tunt(navController: NavController) {
             .fillMaxHeight(1f),
         horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-        Spacer(modifier = Modifier.height(190.dp))
+        Spacer(modifier = Modifier.height(198.dp))
         Image(
             painter = painterResource(id = R.drawable.pum),
             contentDescription = "icon",

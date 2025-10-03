@@ -33,10 +33,10 @@ import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
 
 @Composable
-fun pregunta4(navController: NavController,
+fun pregunta2(navController: NavController,
 ) {
     Image(
-        painter = painterResource(id = R.drawable.pregunta4),
+        painter = painterResource(id = R.drawable.quiz2pregunta2),
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier.fillMaxSize()
@@ -58,12 +58,12 @@ fun pregunta4(navController: NavController,
                 .size(50.dp)
         )
     }
-    preg()
-    Op()
+    preun()
+    nyi()
 }
 
 @Composable
-fun preg() {
+fun preun() {
     Column (
         modifier = Modifier
             .padding(top = 350.dp)
@@ -82,7 +82,7 @@ fun preg() {
 }
 
 @Composable
-fun Op() {
+fun nyi() {
     Button(
         onClick = { /* acción al hacer clic */ },
         modifier = Modifier
@@ -100,7 +100,7 @@ fun Op() {
         )
     ) {
         Text(
-            text = "A. Valiente.",
+            text = "A. Casa.",
             color = Color.Black,
             fontSize = 16.sp
         )
@@ -123,7 +123,7 @@ fun Op() {
         )
     ) {
         Text(
-            text = "B. Alegre.",
+            text = "B. Arbol.",
             color = Color.Black,
             fontSize = 16.sp
         )
@@ -146,7 +146,7 @@ fun Op() {
         )
     ) {
         Text(
-            text = "C. Apacionado.",
+            text = "C. Telefono.",
             color = Color.Black,
             fontSize = 16.sp
         )
@@ -176,6 +176,6 @@ fun Op() {
 
 @Preview(showBackground = true, name = "Preview")
 @Composable
-fun onyu() {
-    pregunta4(navController = rememberNavController())
+fun opi() {
+    pregunta2(navController = rememberNavController())
 }

@@ -60,6 +60,7 @@ fun tuntun(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally,
         ) {
         Spacer(modifier = Modifier.height(190.dp))
+
         Image(
             painter = painterResource(id = R.drawable.contifabu2),
             contentDescription = "icon",

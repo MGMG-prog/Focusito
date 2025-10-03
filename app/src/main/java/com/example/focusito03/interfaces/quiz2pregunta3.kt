@@ -1,5 +1,6 @@
 package com.example.focusito03.interfaces
 
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -33,10 +34,10 @@ import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
 
 @Composable
-fun pregunta4(navController: NavController,
+fun pregunta3(navController: NavController,
 ) {
     Image(
-        painter = painterResource(id = R.drawable.pregunta4),
+        painter = painterResource(id = R.drawable.quiz2pregunta3),
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier.fillMaxSize()
@@ -58,12 +59,12 @@ fun pregunta4(navController: NavController,
                 .size(50.dp)
         )
     }
-    preg()
-    Op()
+    preuni()
+    nyin()
 }
 
 @Composable
-fun preg() {
+fun preuni() {
     Column (
         modifier = Modifier
             .padding(top = 350.dp)
@@ -82,7 +83,7 @@ fun preg() {
 }
 
 @Composable
-fun Op() {
+fun nyin() {
     Button(
         onClick = { /* acción al hacer clic */ },
         modifier = Modifier
@@ -100,7 +101,7 @@ fun Op() {
         )
     ) {
         Text(
-            text = "A. Valiente.",
+            text = "A. Personaje primario",
             color = Color.Black,
             fontSize = 16.sp
         )
@@ -123,7 +124,7 @@ fun Op() {
         )
     ) {
         Text(
-            text = "B. Alegre.",
+            text = "B. Arbol.",
             color = Color.Black,
             fontSize = 16.sp
         )
@@ -146,7 +147,7 @@ fun Op() {
         )
     ) {
         Text(
-            text = "C. Apacionado.",
+            text = "C. Telefono.",
             color = Color.Black,
             fontSize = 16.sp
         )
@@ -176,6 +177,6 @@ fun Op() {
 
 @Preview(showBackground = true, name = "Preview")
 @Composable
-fun onyu() {
-    pregunta4(navController = rememberNavController())
+fun opin() {
+    pregunta3(navController = rememberNavController())
 }
