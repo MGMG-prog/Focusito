@@ -33,10 +33,10 @@ import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
 
 @Composable
-fun preguntao(navController: NavController,
+fun preguntaoi(navController: NavController,
 ) {
     Image(
-        painter = painterResource(id = R.drawable.quiz3pregunta2),
+        painter = painterResource(id = R.drawable.quiz3pregunta3),
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier.fillMaxSize()
@@ -58,12 +58,12 @@ fun preguntao(navController: NavController,
                 .size(50.dp)
         )
     }
-    preumi()
-    nyvn()
+    preumir()
+    nyvnt()
 }
 
 @Composable
-fun preumi() {
+fun preumir() {
     Column (
         modifier = Modifier
             .padding(top = 350.dp)
@@ -82,7 +82,7 @@ fun preumi() {
 }
 
 @Composable
-fun nyvn() {
+fun nyvnt() {
     Button(
         onClick = { /* acción al hacer clic */ },
         modifier = Modifier
@@ -100,7 +100,7 @@ fun nyvn() {
         )
     ) {
         Text(
-            text = "A. Para enfatizar el texto.",
+            text = "A. Para finalizar  un párrafo.",
             color = Color.Black,
             fontSize = 16.sp
         )
@@ -123,7 +123,7 @@ fun nyvn() {
         )
     ) {
         Text(
-            text = "B. Para citar una intervención  de un personaje.",
+            text = "B. Para reemplazar signos de exclamación.",
             color = Color.Black,
             fontSize = 16.sp
         )
@@ -146,7 +146,7 @@ fun nyvn() {
         )
     ) {
         Text(
-            text = "C. Para hacer preguntas.",
+            text = "C. Para separar elementos, aclarar ideas,hacer pausas y evitar confusiones.",
             color = Color.Black,
             fontSize = 16.sp
         )
@@ -176,6 +176,6 @@ fun nyvn() {
 
 @Preview(showBackground = true, name = "Preview")
 @Composable
-fun opon() {
-    preguntao(navController = rememberNavController())
+fun oponi() {
+    preguntaoi(navController = rememberNavController())
 }
