@@ -126,7 +126,7 @@ fun registro(
         val onRegisterClick = null
         Button(
             {
-                viewModel.createUserWithEmailAndPassword(correo, contrasena) {
+                viewModel.createUserWithEmailAndPassword(correo, contrasena, nombre) {
                     navController.navigate(Screen.roles.route)
                 }
             },
