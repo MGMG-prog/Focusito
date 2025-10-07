@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.focusito03.model.User
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
@@ -63,18 +64,36 @@ class LoginViewModel: ViewModel() {
     }
 
     private fun createUser(displayName: String?) {
-        val userId = auth.currentUser?.uid
-        val user = mutableMapOf<String, Any>()
+        val userId = auth.currentUser?.uid ?: return
 
-        user["user_id"] = userId.toString()
-        user["display_name"] = displayName.toString()
+        val user = User(
+            userId = userId.toString(),
+            displayName = displayName.toString(),
+            role = "",
+            id = userId
+        ).toMap()
+
         FirebaseFirestore.getInstance().collection("users")
-            .add(user)
+            .document(userId)
+            .set(user)
             .addOnSuccessListener {
-                Log.d("Create", "Creado ${it.id}")
+                Log.d("Create", "Creado $userId")
             }.addOnFailureListener {
                 Log.d("Create", "Ocurrió un error ${it}")
             }
     }
 
+    fun assignRole(role: String?) {
+        val userId = auth.currentUser?.uid
+
+        FirebaseFirestore.getInstance().collection("users")
+            .document(userId.toString())
+            .update("role", role)
+            .addOnSuccessListener {
+                Log.d("Update", "Actualizado ${role}")
+            }
+            .addOnFailureListener {
+                Log.d("Update", "Ocurrió un error ${it}")
+            }
+    }
 }

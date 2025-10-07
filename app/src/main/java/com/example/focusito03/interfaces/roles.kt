@@ -1,6 +1,5 @@
 package com.example.focusito03.interfaces
 
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -32,9 +31,12 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
 import com.example.focusito03.navegacion.Screen
+import com.example.focusito03.view.model.LoginViewModel
 
 @Composable
-fun roles(navController: NavController,
+fun roles(
+    navController: NavController,
+    viewModel: LoginViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
 
@@ -70,7 +72,9 @@ fun roles(navController: NavController,
         ) {
             Row {
                 Button(
-                    onClick = { navController.navigate(Screen.profesor.route) },
+                    onClick = {
+                        viewModel.assignRole("Teacher")
+                        navController.navigate(Screen.profesor.route) },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color(0xFFcfe8ff),
                         contentColor = Color.White
@@ -85,7 +89,9 @@ fun roles(navController: NavController,
                     )
                 }
                 Button(
-                    onClick = { navController.navigate(Screen.estudiante.route) },
+                    onClick = {
+                        viewModel.assignRole("Student")
+                        navController.navigate(Screen.estudiante.route) },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color(0xFFcfe8ff),
                         contentColor = Color.White
@@ -95,7 +101,7 @@ fun roles(navController: NavController,
                 ) {
                     Image(
                         painter = painterResource(R.drawable.estudiante),
-                        contentDescription = "Profesor",
+                        contentDescription = "Estudiante",
                         modifier = Modifier.size(120.dp)
                     )
                 }
