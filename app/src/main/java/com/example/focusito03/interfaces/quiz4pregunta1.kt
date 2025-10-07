@@ -33,10 +33,10 @@ import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
 
 @Composable
-fun preguntao(navController: NavController,
+fun Quiz4preguntaoi(navController: NavController,
 ) {
     Image(
-        painter = painterResource(id = R.drawable.quiz3pregunta2),
+        painter = painterResource(id = R.drawable.quiz4pregunta1),
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier.fillMaxSize()
@@ -58,15 +58,15 @@ fun preguntao(navController: NavController,
                 .size(50.dp)
         )
     }
-    preumi()
-    nyvn()
+    preumiro()
+    nyvntw()
 }
 
 @Composable
-fun preumi() {
+fun preumiro() {
     Column (
         modifier = Modifier
-            .padding(top = 350.dp)
+            .padding(top = 390.dp)
             .padding(horizontal = 32.dp)
             .fillMaxWidth()
             .height(350.dp)
@@ -82,12 +82,12 @@ fun preumi() {
 }
 
 @Composable
-fun nyvn() {
+fun nyvntw() {
     Button(
         onClick = { /* acción al hacer clic */ },
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 410.dp)
+            .padding(top = 420.dp)
             .padding(horizontal = 52.dp)
             .padding(vertical = 6.dp),
         colors = ButtonDefaults.buttonColors(
@@ -100,7 +100,7 @@ fun nyvn() {
         )
     ) {
         Text(
-            text = "A. Para enfatizar el texto.",
+            text = "A. Variar el tono para expresar  una emoción o significado.",
             color = Color.Black,
             fontSize = 16.sp
         )
@@ -110,7 +110,7 @@ fun nyvn() {
         onClick = { /* acción al hacer clic */ },
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 508.dp)
+            .padding(top = 515.dp)
             .padding(horizontal = 52.dp)
             .padding(vertical = 6.dp),
         colors = ButtonDefaults.buttonColors(
@@ -123,7 +123,7 @@ fun nyvn() {
         )
     ) {
         Text(
-            text = "B. Para citar una intervención  de un personaje.",
+            text = "B. Enfatizar  puntos importantes para la absorción de la información.",
             color = Color.Black,
             fontSize = 16.sp
         )
@@ -133,7 +133,7 @@ fun nyvn() {
         onClick = { /* acción al hacer clic */ },
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 600.dp)
+            .padding(top = 630.dp)
             .padding(horizontal = 52.dp)
             .padding(vertical = 6.dp),
         colors = ButtonDefaults.buttonColors(
@@ -146,7 +146,7 @@ fun nyvn() {
         )
     ) {
         Text(
-            text = "C. Para hacer preguntas.",
+            text = "C. Crear  incertidumbre y confusión de lo que se comenta. ",
             color = Color.Black,
             fontSize = 16.sp
         )
@@ -176,6 +176,6 @@ fun nyvn() {
 
 @Preview(showBackground = true, name = "Preview")
 @Composable
-fun opon() {
-    preguntao(navController = rememberNavController())
+fun oponp() {
+    Quiz4preguntaoi(navController = rememberNavController())
 }
