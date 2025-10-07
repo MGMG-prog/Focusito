@@ -1,5 +1,6 @@
 package com.example.focusito03.interfaces
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
@@ -131,9 +132,22 @@ fun Login(
             Button(
                 {
                     viewModel.signInWithEmailAndPassword(correo, contrasenia){
-                        navController.navigate(Screen.roles.route)
+                        viewModel.getUserRole { role ->
+                            when (role) {
+                                "Teacher" -> {
+                                    navController.navigate(Screen.profesor.route)
+                                }
+                                "Student" -> {
+                                    navController.navigate(Screen.estudiante.route)
+                                }
+                                else -> {
+                                    Log.d("Role", "Rol no reconocido o nulo")
+                                }
+                            }
+                        }
                     }
                 },
+
                 modifier = Modifier.run { size(width = 200.dp, height = 60.dp) },
                 contentPadding = PaddingValues(horizontal = 10.dp, vertical = 20.dp),
                 colors = ButtonDefaults.buttonColors(Color(0xFF051d40))
@@ -163,7 +177,6 @@ fun Login(
                     fontSize = 20.sp
                 )
             }
-
         }
     }
 }
