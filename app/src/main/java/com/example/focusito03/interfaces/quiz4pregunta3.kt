@@ -33,10 +33,10 @@ import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
 
 @Composable
-fun Quiz4pregunta2(navController: NavController,
+fun Quiz4pregunta3(navController: NavController,
 ) {
     Image(
-        painter = painterResource(id = R.drawable.quiz4pregunta2),
+        painter = painterResource(id = R.drawable.quiz4pregunta3),
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier.fillMaxSize()
@@ -58,12 +58,12 @@ fun Quiz4pregunta2(navController: NavController,
                 .size(50.dp)
         )
     }
-    preumiroe()
-    nyvntwe()
+    coco()
+    n()
 }
 
 @Composable
-fun preumiroe() {
+fun coco() {
     Column (
         modifier = Modifier
             .padding(top = 390.dp)
@@ -82,7 +82,7 @@ fun preumiroe() {
 }
 
 @Composable
-fun nyvntwe() {
+fun n() {
     Button(
         onClick = { /* acción al hacer clic */ },
         modifier = Modifier
@@ -100,7 +100,7 @@ fun nyvntwe() {
         )
     ) {
         Text(
-            text = "A. Son signos de puntuación para separar oraciones.",
+            text = "A. Para introducir  una consecuencia o conclusión.",
             color = Color.Black,
             fontSize = 16.sp
         )
@@ -110,7 +110,7 @@ fun nyvntwe() {
         onClick = { /* acción al hacer clic */ },
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 515.dp)
+            .padding(top = 530.dp)
             .padding(horizontal = 52.dp)
             .padding(vertical = 6.dp),
         colors = ButtonDefaults.buttonColors(
@@ -123,7 +123,7 @@ fun nyvntwe() {
         )
     ) {
         Text(
-            text = "B. Es el orden  cronológico en el que se cuentan hechos.",
+            text = "B. Para expresar  contraste u oposición.",
             color = Color.Black,
             fontSize = 16.sp
         )
@@ -146,7 +146,7 @@ fun nyvntwe() {
         )
     ) {
         Text(
-            text = "C. Recurso  expresivo para resaltar y dar importancia con el fin de atraer la atención.",
+            text = "C. Para crear  duda.",
             color = Color.Black,
             fontSize = 16.sp
         )
@@ -176,6 +176,6 @@ fun nyvntwe() {
 
 @Preview(showBackground = true, name = "Preview")
 @Composable
-fun oponpe() {
-    Quiz4pregunta2(navController = rememberNavController())
+fun tersimi() {
+    Quiz4pregunta3(navController = rememberNavController())
 }

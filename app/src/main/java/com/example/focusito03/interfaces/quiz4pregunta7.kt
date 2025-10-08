@@ -33,10 +33,10 @@ import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
 
 @Composable
-fun Quiz4pregunta2(navController: NavController,
+fun Quiz4pregunta7(navController: NavController,
 ) {
     Image(
-        painter = painterResource(id = R.drawable.quiz4pregunta2),
+        painter = painterResource(id = R.drawable.quiz4pregunta7),
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier.fillMaxSize()
@@ -58,12 +58,12 @@ fun Quiz4pregunta2(navController: NavController,
                 .size(50.dp)
         )
     }
-    preumiroe()
-    nyvntwe()
+    coco4()
+    nahhhh()
 }
 
 @Composable
-fun preumiroe() {
+fun coco4() {
     Column (
         modifier = Modifier
             .padding(top = 390.dp)
@@ -82,7 +82,7 @@ fun preumiroe() {
 }
 
 @Composable
-fun nyvntwe() {
+fun nahhhh() {
     Button(
         onClick = { /* acción al hacer clic */ },
         modifier = Modifier
@@ -100,7 +100,8 @@ fun nyvntwe() {
         )
     ) {
         Text(
-            text = "A. Son signos de puntuación para separar oraciones.",
+            text = "A. Son relatos tradicionales que explican el origen de fenómenos naturales o " +
+                    "aspectos culturales a través de seres sobrenaturales.",
             color = Color.Black,
             fontSize = 16.sp
         )
@@ -110,7 +111,7 @@ fun nyvntwe() {
         onClick = { /* acción al hacer clic */ },
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 515.dp)
+            .padding(top = 550.dp)
             .padding(horizontal = 52.dp)
             .padding(vertical = 6.dp),
         colors = ButtonDefaults.buttonColors(
@@ -123,7 +124,7 @@ fun nyvntwe() {
         )
     ) {
         Text(
-            text = "B. Es el orden  cronológico en el que se cuentan hechos.",
+            text = "B. Son cuentos infantiles  creados para infundir misterio e interés.",
             color = Color.Black,
             fontSize = 16.sp
         )
@@ -133,7 +134,7 @@ fun nyvntwe() {
         onClick = { /* acción al hacer clic */ },
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 630.dp)
+            .padding(top = 640.dp)
             .padding(horizontal = 52.dp)
             .padding(vertical = 6.dp),
         colors = ButtonDefaults.buttonColors(
@@ -146,7 +147,7 @@ fun nyvntwe() {
         )
     ) {
         Text(
-            text = "C. Recurso  expresivo para resaltar y dar importancia con el fin de atraer la atención.",
+            text = "C. Son historias de terror hechas para crar incertidumbre y temor.",
             color = Color.Black,
             fontSize = 16.sp
         )
@@ -176,6 +177,6 @@ fun nyvntwe() {
 
 @Preview(showBackground = true, name = "Preview")
 @Composable
-fun oponpe() {
-    Quiz4pregunta2(navController = rememberNavController())
+fun tersi() {
+    Quiz4pregunta7(navController = rememberNavController())
 }
