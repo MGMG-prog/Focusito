@@ -111,13 +111,12 @@ fun roles(
     }
 }
 
-
-
 @Preview(
     showBackground = true,
     name = "Login Preview"
 )
+
 @Composable
 fun rp() {
-roles(navController = rememberNavController())
+    roles(navController = rememberNavController())
 }

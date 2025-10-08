@@ -96,4 +96,25 @@ class LoginViewModel: ViewModel() {
                 Log.d("Update", "Ocurrió un error ${it}")
             }
     }
+
+    fun getUserRole(onResult: (String?) -> Unit) {
+        val userId = auth.currentUser?.uid ?: return
+
+        FirebaseFirestore.getInstance().collection("users")
+            .document(userId)
+            .get()
+            .addOnSuccessListener { document ->
+                if (document != null && document.exists()) {
+                    val role = document.getString("role")
+                    onResult(role)
+                } else {
+                    Log.d("Role", "No se encontró el documento del usuario.")
+                    onResult(null)
+                }
+            }
+            .addOnFailureListener { e ->
+                Log.e("Role", "Error al obtener rol: ${e.message}")
+                onResult(null)
+            }
+    }
 }
