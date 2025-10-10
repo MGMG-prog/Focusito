@@ -40,7 +40,7 @@ fun fabula(navController: NavController) {
         contentDescription = null,
         tint = Color.Black,
         modifier = Modifier.size(50.dp)
-            .clickable { navController.popBackStack() }
+            .clickable { navController.navigate(Screen.fabulasypoemas.route) }
     )
     Column(
         modifier = Modifier
