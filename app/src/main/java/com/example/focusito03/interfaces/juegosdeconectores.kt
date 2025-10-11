@@ -33,7 +33,6 @@ fun mo(
         contentScale = ContentScale.Crop,
         modifier = Modifier.fillMaxSize()
     )
-
     Column(
         modifier = Modifier
             .fillMaxSize(),

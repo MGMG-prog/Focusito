@@ -83,6 +83,7 @@ fun because(navController: NavController) {
         }
     }
 }
+
 @Preview(showBackground = true, name = "Preview")
 @Composable
 fun yes() {

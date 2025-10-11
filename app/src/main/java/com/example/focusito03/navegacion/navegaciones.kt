@@ -53,7 +53,6 @@ import com.example.focusito03.interfaces.tun
 import com.example.focusito03.interfaces.tunt
 import com.example.focusito03.interfaces.tuntu
 import com.example.focusito03.interfaces.tuntun
-import com.example.focusito03.interfaces.you
 
 @Composable
 fun tress(modifier: Modifier = Modifier) {
@@ -87,7 +86,6 @@ fun tress(modifier: Modifier = Modifier) {
         composable(Screen.poemas.route) { poema(navController) }
         composable(Screen.poema1.route) { fonfo(navController) }
         composable(Screen.poema2.route) { fon(navController) }
-        composable(Screen.actividadnoregistrada.route) { you(navController) }
         // Actividades: preguntas y completar fraces
         composable(Screen.quiz.route) { because(navController) }
         composable(Screen.quiz1.route) { quiz(navController) }

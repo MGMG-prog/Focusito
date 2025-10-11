@@ -1,5 +1,6 @@
 package com.example.focusito03.interfaces
 
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -27,7 +29,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Canvas
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.PaintingStyle.Companion.Stroke
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
@@ -46,7 +52,7 @@ fun PantallaAhorcado(navController: NavController,) {
             .fillMaxSize()
     ) {
         Image(
-            painter = painterResource(id = R.drawable.fondoahorcado), // tu imagen
+            painter = painterResource(id = R.drawable.fondoahorcado),
             contentDescription = "Fondo estrellado",
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop
@@ -67,7 +73,6 @@ fun PantallaAhorcado(navController: NavController,) {
                     .clickable { navController.popBackStack() }
             )
         }
-
         IconButton(
             onClick = { /* acción sonido */ },
             modifier = Modifier
@@ -83,7 +88,6 @@ fun PantallaAhorcado(navController: NavController,) {
                     .align(Alignment.TopEnd)
             )
         }
-
         Box(
             modifier = Modifier
                 .align(Alignment.Center)
@@ -147,6 +151,48 @@ fun PantallaAhorcado(navController: NavController,) {
         }
     }
 }
+
+@Composable
+fun AhorcadoDibujo(errores: Int) {
+    Canvas(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(300.dp)
+    ) {
+        // Estructura fija (base)
+        drawLine(Color.White, start = Offset(100f, 280f), end = Offset(300f, 280f), strokeWidth = 10f)
+        drawLine(Color.White, start = Offset(200f, 280f), end = Offset(200f, 50f), strokeWidth = 10f)
+        drawLine(Color.White, start = Offset(200f, 50f), end = Offset(300f, 50f), strokeWidth = 10f)
+        drawLine(Color.White, start = Offset(300f, 50f), end = Offset(300f, 80f), strokeWidth = 10f)
+
+        // Partes del cuerpo que aparecen según los errores
+        if (errores >= 1) {
+            // Cabeza
+            drawCircle(Color.White, radius = 20f, center = Offset(300f, 100f), style = Stroke(width = 5f))
+        }
+        if (errores >= 2) {
+            // Cuerpo
+            drawLine(Color.White, start = Offset(300f, 120f), end = Offset(300f, 180f), strokeWidth = 5f)
+        }
+        if (errores >= 3) {
+            // Brazo izquierdo
+            drawLine(Color.White, start = Offset(300f, 130f), end = Offset(270f, 160f), strokeWidth = 5f)
+        }
+        if (errores >= 4) {
+            // Brazo derecho
+            drawLine(Color.White, start = Offset(300f, 130f), end = Offset(330f, 160f), strokeWidth = 5f)
+        }
+        if (errores >= 5) {
+            // Pierna izquierda
+            drawLine(Color.White, start = Offset(300f, 180f), end = Offset(270f, 220f), strokeWidth = 5f)
+        }
+        if (errores >= 6) {
+            // Pierna derecha
+            drawLine(Color.White, start = Offset(300f, 180f), end = Offset(330f, 220f), strokeWidth = 5f)
+        }
+    }
+}
+
 @Preview(showBackground = true, name = "Preview")
 @Composable
 fun hoppppm() {
