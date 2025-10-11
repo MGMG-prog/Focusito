@@ -2,7 +2,6 @@ package com.example.focusito03.interfaces
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,7 +10,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,22 +22,18 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
-import com.example.focusito03.navegacion.Screen
-import com.example.focusito03.ui.ConfettiScreen
-import nl.dionsegijn.konfetti.compose.KonfettiView
-import nl.dionsegijn.konfetti.core.PartyFactory
-import nl.dionsegijn.konfetti.core.Position
-import nl.dionsegijn.konfetti.core.emitter.Emitter
-import java.util.concurrent.TimeUnit
 
 @Composable
-fun terminaste(navController: NavController ) {
+fun mo(
+    navController: NavController,
+) {
     Image(
-        painter = painterResource(id = R.drawable.terminaste1),
+        painter = painterResource(id = R.drawable.juegosdeconectores),
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier.fillMaxSize()
     )
+
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -47,23 +41,25 @@ fun terminaste(navController: NavController ) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Button(
-            onClick = { { navController.navigate(Screen.comensemosquiz2.route) }},
+            onClick = {},
             modifier = Modifier.run { size(width = 350.dp, height = 80.dp) },
             contentPadding = PaddingValues(horizontal = 10.dp, vertical = 20.dp),
-            colors = ButtonDefaults.buttonColors(Color(0xFFc3d9f8)),
+            colors = ButtonDefaults.buttonColors(Color(0x805ce1e6)),
         ) {
             Text(
-                text = "Siguiente",
+                text = "Adelante",
                 fontSize = 35
                     .sp,
-                color = Color.Black
+                color = Color.White,
+                fontWeight = FontWeight.ExtraBold
             )
         }
     }
 }
 
+
 @Preview(showBackground = true, name = "Preview")
 @Composable
-fun fin() {
-    terminaste(navController = rememberNavController())
+fun hop() {
+    mo(navController = rememberNavController())
 }

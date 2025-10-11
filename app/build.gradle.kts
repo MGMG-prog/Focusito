@@ -64,4 +64,9 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
+    implementation("nl.dionsegijn:konfetti-compose:2.0.4")
+    implementation("androidx.compose.ui:ui:1.7.0")
+    implementation("androidx.compose.material3:material3:1.2.0")
+    implementation("nl.dionsegijn:konfetti-compose:2.0.4")
+
 }
