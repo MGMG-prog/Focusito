@@ -75,7 +75,6 @@ fun fad(navController: NavController) {
                 .size(800.dp)
         )
         }
-    RaccoonMockAnimation()
     }
 
 @Preview(showBackground = true, name = "Preview")
