@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
+import com.example.focusito03.navegacion.Screen
 
 
 @Composable
@@ -38,7 +39,7 @@ fun terminaste3(navController: NavController ) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Button(
-            onClick = {},
+            {navController.navigate(Screen.comencemosquiz4.route)},
             modifier = Modifier.run { size(width = 350.dp, height = 80.dp) },
             contentPadding = PaddingValues(horizontal = 10.dp, vertical = 20.dp),
             colors = ButtonDefaults.buttonColors(Color(0xFFc3d9f8)),

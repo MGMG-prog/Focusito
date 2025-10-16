@@ -20,6 +20,10 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -31,6 +35,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
+import com.example.focusito03.navegacion.Screen
 
 @Composable
 fun quiz1pregunta3(navController: NavController,
@@ -59,7 +64,7 @@ fun quiz1pregunta3(navController: NavController,
         )
     }
     preu3()
-    ny3()
+    ny3(navController)
 }
 
 @Composable
@@ -82,16 +87,29 @@ fun preu3() {
 }
 
 @Composable
-fun ny3() {
+fun ny3(navController: NavController,) {
+
+    var selectedOption by remember { mutableStateOf<String?>(null) }
+
+    val correctAnswer = "C"
+
+    fun getButtonColor(option: String): Color {
+        return when {
+            selectedOption == null -> Color(0x80535353) // gris inicial
+            selectedOption == option && option == correctAnswer -> Color(0xFF4CAF50) // verde correcto
+            selectedOption == option && option != correctAnswer -> Color(0xFFFF5252) // rojo incorrecto
+            else -> Color(0x80535353)
+        }
+    }
     Button(
-        onClick = { /* acción al hacer clic */ },
+        onClick = { selectedOption = "A" },
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 410.dp)
             .padding(horizontal = 52.dp)
             .padding(vertical = 6.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0x80535353)
+            containerColor = getButtonColor("A")
         ),
         shape = RoundedCornerShape(16.dp),
         elevation = ButtonDefaults.buttonElevation(
@@ -100,21 +118,20 @@ fun ny3() {
         )
     ) {
         Text(
-            text = "A. Decorar la oración.",
+            text = "A. Decorar la oración",
             color = Color.Black,
             fontSize = 16.sp
         )
     }
-
     Button(
-        onClick = { /* acción al hacer clic */ },
+        onClick = { selectedOption = "B" },
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 508.dp)
             .padding(horizontal = 52.dp)
             .padding(vertical = 6.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0x80535353)
+            containerColor = getButtonColor("B")
         ),
         shape = RoundedCornerShape(16.dp),
         elevation = ButtonDefaults.buttonElevation(
@@ -123,21 +140,20 @@ fun ny3() {
         )
     ) {
         Text(
-            text = "B. Enfatizar la oración.",
+            text = " B. Enfatizar la oración.",
             color = Color.Black,
             fontSize = 16.sp
         )
     }
-
     Button(
-        onClick = { /* acción al hacer clic */ },
+        onClick = { selectedOption = "C" },
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 600.dp)
             .padding(horizontal = 52.dp)
             .padding(vertical = 6.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0x80535353)
+            containerColor = getButtonColor("C")
         ),
         shape = RoundedCornerShape(16.dp),
         elevation = ButtonDefaults.buttonElevation(
@@ -159,15 +175,14 @@ fun ny3() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Button(
-            onClick = {},
-            modifier = Modifier.run { size(width = 250.dp, height = 60.dp) },
+            {navController.navigate(Screen.quiz1pregunta4.route)},
+            modifier = Modifier.size(width = 250.dp, height = 60.dp),
             contentPadding = PaddingValues(horizontal = 10.dp, vertical = 20.dp),
-            colors = ButtonDefaults.buttonColors(Color(0xFFc3d9f8)),
+            colors = ButtonDefaults.buttonColors(Color(0xFFc3d9f8))
         ) {
             Text(
                 text = "Siguiente",
-                fontSize = 20
-                    .sp,
+                fontSize = 20.sp,
                 color = Color.Black
             )
         }

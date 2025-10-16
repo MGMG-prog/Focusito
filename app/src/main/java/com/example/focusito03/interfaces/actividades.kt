@@ -76,7 +76,7 @@ fun estud(navController: NavController) {
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 val items = listOf(
-                    R.drawable.preguntas to Screen.fabulasypoemas.route,
+                    R.drawable.preguntas to Screen.quiz.route,
                     R.drawable.juegosdecartas to Screen.roles.route,
                     R.drawable.cuentos to Screen.fabulasypoemas.route,
                     R.drawable.ahorcado to Screen.poemas.route

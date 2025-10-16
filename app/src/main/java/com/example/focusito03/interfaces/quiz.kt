@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
+import com.example.focusito03.navegacion.Screen
 
 @Composable
 fun because(navController: NavController) {
@@ -66,7 +67,7 @@ fun because(navController: NavController) {
             Spacer(modifier = Modifier.width(80.dp))
             Spacer(modifier = Modifier.height(650.dp))
             Button(
-                onClick = { },
+                onClick = {  navController.navigate(Screen.quiz1.route) },
                 modifier = Modifier
                     .width(140.dp)
                     .height(45.dp),
@@ -77,7 +78,7 @@ fun because(navController: NavController) {
                     contentDescription = null,
                     tint = Color.Yellow,
                     modifier = Modifier.size(30.dp)
-                        .clickable { navController.popBackStack() }
+                        .clickable { navController.navigate(Screen.quiz1.route)  }
                 )
             }
         }

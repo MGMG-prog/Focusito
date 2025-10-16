@@ -46,7 +46,7 @@ fun quiz(navController: NavController,
         ) {
             Spacer(modifier = Modifier.height(90.dp))
             Button(
-                {navController.navigate(Screen.login.route)},
+                {navController.navigate(Screen.quiz1pregunta1.route)},
                 modifier = Modifier
                     .width(240.dp)
                     .height(55.dp),

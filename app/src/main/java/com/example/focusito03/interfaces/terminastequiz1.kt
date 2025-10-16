@@ -38,7 +38,7 @@ fun terminaste(navController: NavController ) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Button(
-            onClick = { { navController.navigate(Screen.comensemosquiz2.route) }},
+            {navController.navigate(Screen.comensemosquiz2.route)},
             modifier = Modifier.run { size(width = 350.dp, height = 80.dp) },
             contentPadding = PaddingValues(horizontal = 10.dp, vertical = 20.dp),
             colors = ButtonDefaults.buttonColors(Color(0xFFc3d9f8)),

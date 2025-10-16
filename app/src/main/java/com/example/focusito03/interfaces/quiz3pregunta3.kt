@@ -20,6 +20,10 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -31,6 +35,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
+import com.example.focusito03.navegacion.Screen
 
 @Composable
 fun preguntaoi(navController: NavController,
@@ -59,7 +64,7 @@ fun preguntaoi(navController: NavController,
         )
     }
     preumir()
-    nyvnt()
+    nyvnt(navController)
 }
 
 @Composable
@@ -80,18 +85,34 @@ fun preumir() {
     ){
     }
 }
-
 @Composable
-fun nyvnt() {
+fun nyvnt(navController: NavController,) {
+    // Estado para guardar la opción seleccionada
+    var selectedOption  by remember { mutableStateOf<String?>(null) }
+
+    // Respuesta correcta
+    val correctAnswer = "A"
+
+    // Función que retorna el color del botón según la selección
+    fun getButtonColor(option: String): Color {
+        return when {
+            selectedOption == null -> Color(0x80535353) // gris inicial
+            selectedOption == option && option == correctAnswer -> Color(0xFF4CAF50) // verde correcto
+            selectedOption == option && option != correctAnswer -> Color(0xFFFF5252) // rojo incorrecto
+            else -> Color(0x80535353)
+        }
+    }
+
+    // 🔹 Botón A
     Button(
-        onClick = { /* acción al hacer clic */ },
+        onClick = { selectedOption = "A" },
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 410.dp)
             .padding(horizontal = 52.dp)
             .padding(vertical = 6.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0x80535353)
+            containerColor = getButtonColor("A")
         ),
         shape = RoundedCornerShape(16.dp),
         elevation = ButtonDefaults.buttonElevation(
@@ -100,21 +121,22 @@ fun nyvnt() {
         )
     ) {
         Text(
-            text = "A. Para finalizar  un párrafo.",
+            text = "A. Para realizar aclaraciones, resaltar citas y encerrar datos",
             color = Color.Black,
             fontSize = 16.sp
         )
     }
 
+    // 🔹 Botón B
     Button(
-        onClick = { /* acción al hacer clic */ },
+        onClick = { selectedOption = "B" },
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 508.dp)
             .padding(horizontal = 52.dp)
             .padding(vertical = 6.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0x80535353)
+            containerColor = getButtonColor("B")
         ),
         shape = RoundedCornerShape(16.dp),
         elevation = ButtonDefaults.buttonElevation(
@@ -123,21 +145,22 @@ fun nyvnt() {
         )
     ) {
         Text(
-            text = "B. Para reemplazar signos de exclamación.",
+            text = "B. Para decorar un cuaderno con palabras bonitas.",
             color = Color.Black,
             fontSize = 16.sp
         )
     }
 
+    // 🔹 Botón C
     Button(
-        onClick = { /* acción al hacer clic */ },
+        onClick = { selectedOption = "C" },
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 600.dp)
             .padding(horizontal = 52.dp)
             .padding(vertical = 6.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0x80535353)
+            containerColor = getButtonColor("C")
         ),
         shape = RoundedCornerShape(16.dp),
         elevation = ButtonDefaults.buttonElevation(
@@ -146,11 +169,13 @@ fun nyvnt() {
         )
     ) {
         Text(
-            text = "C. Para separar elementos, aclarar ideas,hacer pausas y evitar confusiones.",
+            text = "C. Para desviar la atención.",
             color = Color.Black,
             fontSize = 16.sp
         )
     }
+
+    // 🔹 Botón "Siguiente"
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -159,20 +184,20 @@ fun nyvnt() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Button(
-            onClick = {},
-            modifier = Modifier.run { size(width = 250.dp, height = 60.dp) },
+            {navController.navigate(Screen.terminastequiz3.route)},
+            modifier = Modifier.size(width = 250.dp, height = 60.dp),
             contentPadding = PaddingValues(horizontal = 10.dp, vertical = 20.dp),
-            colors = ButtonDefaults.buttonColors(Color(0xFFc3d9f8)),
+            colors = ButtonDefaults.buttonColors(Color(0xFFc3d9f8))
         ) {
             Text(
                 text = "Siguiente",
-                fontSize = 20
-                    .sp,
+                fontSize = 20.sp,
                 color = Color.Black
             )
         }
     }
 }
+
 
 @Preview(showBackground = true, name = "Preview")
 @Composable
