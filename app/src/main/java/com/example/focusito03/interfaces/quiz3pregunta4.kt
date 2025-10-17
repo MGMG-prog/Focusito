@@ -39,10 +39,10 @@ import com.example.focusito03.R
 import com.example.focusito03.navegacion.Screen
 
 @Composable
-fun Quiz4pregunta5(navController: NavController,
+fun preguntaooo(navController: NavController,
 ) {
     Image(
-        painter = painterResource(id = R.drawable.quiz4pregunta5),
+        painter = painterResource(id = R.drawable.quiz3pregunta4),
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier.fillMaxSize()
@@ -64,15 +64,15 @@ fun Quiz4pregunta5(navController: NavController,
                 .size(50.dp)
         )
     }
-    coco2()
-    nahh(navController)
+    preumiroo()
+    nonono(navController)
 }
 
 @Composable
-fun coco2() {
+fun preumiroo() {
     Column (
         modifier = Modifier
-            .padding(top = 390.dp)
+            .padding(top = 350.dp)
             .padding(horizontal = 32.dp)
             .fillMaxWidth()
             .height(350.dp)
@@ -86,13 +86,12 @@ fun coco2() {
     ){
     }
 }
-
 @Composable
-fun nahh(navController: NavController) {
+fun nonono(navController: NavController) {
 
     var selectedOption by remember { mutableStateOf<String?>(null) }
 
-    val correctAnswer = "C"
+    val correctAnswer = "A"
 
     Column(
         modifier = Modifier
@@ -103,9 +102,9 @@ fun nahh(navController: NavController) {
         Spacer(modifier = Modifier.height(195.dp))
 
         val options = listOf(
-            "A" to "A. Para expresar  una idea contraría a la esperada.",
-            "B" to "B. Para expresar  contraste u oposición.",
-            "C" to "C. Para introducir  consecuencia o conclusión."
+            "A" to "A. Una palabra con un significado  igual o parecido al de la otra palabra .",
+            "B" to "B. Una palabra que significa  lo contrario de otra.",
+            "C" to "C. Es un signo de puntuación que se usa entre oraciones."
         )
 
         options.forEach { (key, text) ->
@@ -137,7 +136,7 @@ fun nahh(navController: NavController) {
         Spacer(modifier = Modifier.height(20.dp))
 
         Button(
-            {navController.navigate(Screen.quiz4pregunta6.route)},
+            onClick = { navController.navigate("actividades") },
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFc3d9f8)),
             shape = RoundedCornerShape(12.dp),
             modifier = Modifier
@@ -151,6 +150,6 @@ fun nahh(navController: NavController) {
 
 @Preview(showBackground = true, name = "Preview")
 @Composable
-fun tersim99() {
-    Quiz4pregunta5(navController = rememberNavController())
+fun oponio() {
+    preguntaooo(navController = rememberNavController())
 }

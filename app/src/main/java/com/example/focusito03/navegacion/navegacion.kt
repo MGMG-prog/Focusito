@@ -46,6 +46,8 @@ sealed class Screen(val route: String
     object quiz3pregunta1: Screen("quiz3pregunta1")
     object quiz3pregunta2 : Screen("quiz3pregunta2")
     object quiz3pregunta3: Screen("quiz3pregunta3")
+    object quiz3pregunta4: Screen("quiz3pregunta4")
+    object quiz3pregunta5: Screen("quiz3pregunta5")
     object terminastequiz3: Screen("terminastequiz3")
     object comencemosquiz4: Screen("comencemosquiz4")
     object quiz4pregunta1: Screen("quiz4pregunta1")

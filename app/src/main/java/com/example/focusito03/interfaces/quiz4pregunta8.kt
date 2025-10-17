@@ -92,7 +92,7 @@ fun Nahhhhh(navController: NavController) {
 
     var selectedOption by remember { mutableStateOf<String?>(null) }
 
-    val correctAnswer = "A"
+    val correctAnswer = "B"
 
     Column(
         modifier = Modifier
@@ -103,9 +103,9 @@ fun Nahhhhh(navController: NavController) {
         Spacer(modifier = Modifier.height(195.dp))
 
         val options = listOf(
-            "A" to "A. Para realizar aclaraciones, resaltar citas y encerrar datos.",
-            "B" to "B. Para decorar un cuaderno con palabras bonitas.",
-            "C" to "C. Para desviar la atención."
+            "A" to "A. Son ideas personales que dependen de cada punto de vista.",
+            "B" to "B. Son declaraciones probadas o verificadas a través de la ciencia.",
+            "C" to "C. Son suposiciones que no necesitan ser verificadas."
         )
 
         options.forEach { (key, text) ->
@@ -137,7 +137,7 @@ fun Nahhhhh(navController: NavController) {
         Spacer(modifier = Modifier.height(20.dp))
 
         Button(
-            onClick = { navController.navigate("actividades") },
+            {navController.navigate(Screen.actividades.route)},
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFc3d9f8)),
             shape = RoundedCornerShape(12.dp),
             modifier = Modifier

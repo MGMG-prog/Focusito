@@ -137,7 +137,7 @@ fun ny2(navController: NavController) {
         Spacer(modifier = Modifier.height(20.dp))
 
         Button(
-            onClick = { navController.navigate("actividades") },
+            {navController.navigate(Screen.quiz1pregunta3.route)},
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFc3d9f8)),
             shape = RoundedCornerShape(12.dp),
             modifier = Modifier

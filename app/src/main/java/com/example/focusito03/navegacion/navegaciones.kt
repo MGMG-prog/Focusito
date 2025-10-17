@@ -33,6 +33,8 @@ import com.example.focusito03.interfaces.pregunta2
 import com.example.focusito03.interfaces.pregunta3
 import com.example.focusito03.interfaces.preguntao
 import com.example.focusito03.interfaces.preguntaoi
+import com.example.focusito03.interfaces.preguntaooo
+import com.example.focusito03.interfaces.preguntaoou
 import com.example.focusito03.interfaces.profe
 import com.example.focusito03.interfaces.pum
 import com.example.focusito03.interfaces.puntos
@@ -104,6 +106,8 @@ fun tress(modifier: Modifier = Modifier) {
         composable(Screen.quiz3pregunta1.route) { pregunta(navController) }
         composable(Screen.quiz3pregunta2.route) { preguntao(navController) }
         composable(Screen.quiz3pregunta3.route) { preguntaoi(navController) }
+        composable(Screen.quiz3pregunta4.route) { preguntaooo(navController) }
+        composable(Screen.quiz3pregunta5.route) { preguntaoou(navController) }
         composable(Screen.terminastequiz3.route) { terminaste3(navController) }
         composable(Screen.comencemosquiz4.route) { mopi(navController) }
         composable(Screen.quiz4pregunta1.route) { Quiz4preguntao(navController) }
