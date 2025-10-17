@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -87,105 +88,62 @@ fun preu2() {
 }
 
 @Composable
-fun ny2(navController: NavController,) {
+fun ny2(navController: NavController) {
 
     var selectedOption by remember { mutableStateOf<String?>(null) }
 
     val correctAnswer = "C"
 
-    fun getButtonColor(option: String): Color {
-        return when {
-            selectedOption == null -> Color(0x80535353) // gris inicial
-            selectedOption == option && option == correctAnswer -> Color(0xFF4CAF50) // verde correcto
-            selectedOption == option && option != correctAnswer -> Color(0xFFFF5252) // rojo incorrecto
-            else -> Color(0x80535353)
-        }
-    }
-
-    Button(
-        onClick = { selectedOption = "A" },
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 410.dp)
-            .padding(horizontal = 52.dp)
-            .padding(vertical = 6.dp),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = getButtonColor("A")
-        ),
-        shape = RoundedCornerShape(16.dp),
-        elevation = ButtonDefaults.buttonElevation(
-            defaultElevation = 4.dp,
-            pressedElevation = 8.dp
-        )
-    ) {
-        Text(
-            text = "A. En la letra I",
-            color = Color.Black,
-            fontSize = 16.sp
-        )
-    }
-    Button(
-        onClick = { selectedOption = "B" },
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 508.dp)
-            .padding(horizontal = 52.dp)
-            .padding(vertical = 6.dp),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = getButtonColor("B")
-        ),
-        shape = RoundedCornerShape(16.dp),
-        elevation = ButtonDefaults.buttonElevation(
-            defaultElevation = 4.dp,
-            pressedElevation = 8.dp
-        )
-    ) {
-        Text(
-            text = "B. En la letra A",
-            color = Color.Black,
-            fontSize = 16.sp
-        )
-    }
-    Button(
-        onClick = { selectedOption = "C" },
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 600.dp)
-            .padding(horizontal = 52.dp)
-            .padding(vertical = 6.dp),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = getButtonColor("C")
-        ),
-        shape = RoundedCornerShape(16.dp),
-        elevation = ButtonDefaults.buttonElevation(
-            defaultElevation = 4.dp,
-            pressedElevation = 8.dp
-        )
-    ) {
-        Text(
-            text = "C. En la letra O.",
-            color = Color.Black,
-            fontSize = 16.sp
-        )
-    }
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(bottom = 40.dp),
-        verticalArrangement = Arrangement.Bottom,
+            .padding(top = 200.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Spacer(modifier = Modifier.height(195.dp))
+
+        val options = listOf(
+            "A" to "A. En la letra I",
+            "B" to "B. En la letra A",
+            "C" to "C. En la letra O"
+        )
+
+        options.forEach { (key, text) ->
+            val color = when {
+                selectedOption == null -> Color(0xFFCCCCCC)
+                selectedOption == key && key == correctAnswer -> Color(0xFF4CAF50) // Verde
+                selectedOption == key && key != correctAnswer -> Color(0xFFFF5252) // Rojo
+                else -> Color(0xFFE0E0E0)
+            }
+
+            Button(
+                onClick = { if (selectedOption == null) selectedOption = key },
+                enabled = selectedOption == null,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = color,
+                    disabledContainerColor = color,
+                    contentColor = Color.Black
+                ),
+                shape = RoundedCornerShape(16.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 52.dp, vertical = 8.dp)
+                    .height(60.dp)
+            ) {
+                Text(text, fontSize = 16.sp)
+            }
+        }
+
+        Spacer(modifier = Modifier.height(20.dp))
+
         Button(
-            {navController.navigate(Screen.quiz1pregunta3.route)},
-            modifier = Modifier.size(width = 250.dp, height = 60.dp),
-            contentPadding = PaddingValues(horizontal = 10.dp, vertical = 20.dp),
-            colors = ButtonDefaults.buttonColors(Color(0xFFc3d9f8))
+            onClick = { navController.navigate("actividades") },
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFc3d9f8)),
+            shape = RoundedCornerShape(12.dp),
+            modifier = Modifier
+                .size(width = 250.dp, height = 60.dp)
         ) {
-            Text(
-                text = "Siguiente",
-                fontSize = 20.sp,
-                color = Color.Black
-            )
+            Text("Siguiente", fontSize = 20.sp, color = Color.Black)
         }
     }
 }

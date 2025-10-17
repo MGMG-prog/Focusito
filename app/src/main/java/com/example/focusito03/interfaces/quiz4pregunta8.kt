@@ -66,7 +66,6 @@ fun Quiz4pregunta8(navController: NavController,
     }
     coco5()
     Nahhhhh(navController)
-
 }
 
 @Composable
@@ -87,11 +86,13 @@ fun coco5() {
     ){
     }
 }
+
 @Composable
 fun Nahhhhh(navController: NavController) {
-    var selectedOption by remember { mutableStateOf<String?>(null) }
-    val correctAnswer = "A"
 
+    var selectedOption by remember { mutableStateOf<String?>(null) }
+
+    val correctAnswer = "A"
 
     Column(
         modifier = Modifier
@@ -100,14 +101,13 @@ fun Nahhhhh(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.height(195.dp))
-        // Lista de opciones
+
         val options = listOf(
             "A" to "A. Para realizar aclaraciones, resaltar citas y encerrar datos.",
             "B" to "B. Para decorar un cuaderno con palabras bonitas.",
             "C" to "C. Para desviar la atención."
         )
 
-        // Mostrar las opciones
         options.forEach { (key, text) ->
             val color = when {
                 selectedOption == null -> Color(0xFFCCCCCC)
@@ -121,7 +121,7 @@ fun Nahhhhh(navController: NavController) {
                 enabled = selectedOption == null,
                 colors = ButtonDefaults.buttonColors(
                     containerColor = color,
-                    disabledContainerColor = color, // 👈 Esto asegura que se vea el color aunque esté desactivado
+                    disabledContainerColor = color,
                     contentColor = Color.Black
                 ),
                 shape = RoundedCornerShape(16.dp),
@@ -136,7 +136,6 @@ fun Nahhhhh(navController: NavController) {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // Botón siguiente
         Button(
             onClick = { navController.navigate("actividades") },
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFc3d9f8)),
@@ -148,9 +147,6 @@ fun Nahhhhh(navController: NavController) {
         }
     }
 }
-
-
-
 
 @Preview(showBackground = true, name = "Preview")
 @Composable
