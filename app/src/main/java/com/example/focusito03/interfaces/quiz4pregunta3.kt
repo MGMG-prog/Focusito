@@ -2,10 +2,8 @@ package com.example.focusito03.interfaces
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,8 +12,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -48,14 +44,6 @@ fun Quiz4pregunta3(navController: NavController,
         modifier = Modifier.fillMaxSize()
     )
     Row (modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
-        Icon(
-            imageVector = Icons.Filled.ArrowBack,
-            contentDescription = null,
-            tint = Color.Yellow,
-            modifier = Modifier
-                .size(50.dp)
-                .clickable { navController.popBackStack() }
-        )
         Icon(
             painter = painterResource(id = R.drawable.sonido),
             contentDescription = "Sonido",
@@ -111,8 +99,8 @@ fun n(navController: NavController) {
         options.forEach { (key, text) ->
             val color = when {
                 selectedOption == null -> Color(0xFFCCCCCC)
-                selectedOption == key && key == correctAnswer -> Color(0xFF4CAF50) // Verde
-                selectedOption == key && key != correctAnswer -> Color(0xFFFF5252) // Rojo
+                selectedOption == key && key == correctAnswer -> Color(0xFF4CAF50)
+                selectedOption == key && key != correctAnswer -> Color(0xFFFF5252)
                 else -> Color(0xFFE0E0E0)
             }
 

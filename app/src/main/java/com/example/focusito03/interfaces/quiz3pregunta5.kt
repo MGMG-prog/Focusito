@@ -48,14 +48,7 @@ fun preguntaoou(navController: NavController,
         modifier = Modifier.fillMaxSize()
     )
     Row (modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
-        Icon(
-            imageVector = Icons.Filled.ArrowBack,
-            contentDescription = null,
-            tint = Color.Yellow,
-            modifier = Modifier
-                .size(50.dp)
-                .clickable { navController.popBackStack() }
-        )
+
         Icon(
             painter = painterResource(id = R.drawable.sonido),
             contentDescription = "Sonido",

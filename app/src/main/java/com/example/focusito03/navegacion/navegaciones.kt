@@ -7,6 +7,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.interfaces.Login
+import com.example.focusito03.interfaces.PantallaAhorcado
+import com.example.focusito03.interfaces.PantallaConectores
+import com.example.focusito03.interfaces.PantallaConectores2
+import com.example.focusito03.interfaces.PantallaConectores3
+import com.example.focusito03.interfaces.PantallaConectores4
+import com.example.focusito03.interfaces.PantallaConectores5
 import com.example.focusito03.interfaces.Quiz4pregunta2
 import com.example.focusito03.interfaces.Quiz4pregunta3
 import com.example.focusito03.interfaces.Quiz4pregunta4
@@ -16,6 +22,7 @@ import com.example.focusito03.interfaces.Quiz4pregunta7
 import com.example.focusito03.interfaces.Quiz4pregunta8
 import com.example.focusito03.interfaces.Quiz4preguntao
 import com.example.focusito03.interfaces.because
+import com.example.focusito03.interfaces.conectores
 import com.example.focusito03.interfaces.estu
 import com.example.focusito03.interfaces.estud
 import com.example.focusito03.interfaces.fabula
@@ -118,6 +125,14 @@ fun tress(modifier: Modifier = Modifier) {
         composable(Screen.quiz4pregunta6.route) { Quiz4pregunta6(navController) }
         composable(Screen.quiz4pregunta7.route) { Quiz4pregunta7(navController) }
         composable(Screen.quiz4pregunta8.route) { Quiz4pregunta8(navController) }
+        composable(Screen.comencemosconectores.route) { conectores(navController) }
+        composable(Screen.conector1.route) { PantallaConectores(navController) }
+        composable(Screen.conector2.route) { PantallaConectores2(navController) }
+        composable(Screen.conector3.route) { PantallaConectores3(navController) }
+        composable(Screen.conector4.route) { PantallaConectores4(navController) }
+        composable(Screen.conector5.route) { PantallaConectores5(navController) }
+        // Actividades: ahorcado
+        composable(Screen.ahorcado.route) { PantallaAhorcado(navController) }
     }
 }
 

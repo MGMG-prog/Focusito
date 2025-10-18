@@ -24,11 +24,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -36,7 +38,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
+import com.example.focusito03.data.PuntosManager
 import com.example.focusito03.navegacion.Screen
+import kotlinx.coroutines.launch
 
 @Composable
 fun quiz1pregunta2(navController: NavController,
@@ -48,14 +52,6 @@ fun quiz1pregunta2(navController: NavController,
         modifier = Modifier.fillMaxSize()
     )
     Row (modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
-        Icon(
-            imageVector = Icons.Filled.ArrowBack,
-            contentDescription = null,
-            tint = Color.Yellow,
-            modifier = Modifier
-                .size(50.dp)
-                .clickable { navController.popBackStack() }
-        )
         Icon(
             painter = painterResource(id = R.drawable.sonido),
             contentDescription = "Sonido",

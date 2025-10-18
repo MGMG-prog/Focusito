@@ -58,4 +58,12 @@ sealed class Screen(val route: String
     object quiz4pregunta6: Screen("quiz4pregunta6")
     object quiz4pregunta7: Screen("quiz4pregunta7")
     object quiz4pregunta8: Screen("quiz4pregunta8")
+    object comencemosconectores: Screen("comencemosconectores")
+    object conector1: Screen("conector1")
+    object conector2: Screen("conector2")
+    object conector3: Screen("conector3")
+    object conector4: Screen("conector4")
+    object conector5: Screen("conector5")
+    // Actividades: Ahorcado
+    object ahorcado: Screen("ahorcado")
 }

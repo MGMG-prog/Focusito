@@ -79,7 +79,7 @@ fun estud(navController: NavController) {
                     R.drawable.preguntas to Screen.quiz.route,
                     R.drawable.juegosdecartas to Screen.roles.route,
                     R.drawable.cuentos to Screen.fabulasypoemas.route,
-                    R.drawable.ahorcado to Screen.poemas.route
+                    R.drawable.ahorcado to Screen.ahorcado.route
                 )
                 items(items) { (imagen, ruta) ->
                     Card(

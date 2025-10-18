@@ -8,6 +8,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,6 +27,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -56,92 +61,151 @@ fun PantallaAhorcado(navController: NavController,) {
             contentDescription = "Fondo estrellado",
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop
-        )
+        )// 🔤 Palabras posibles
+        val palabras = listOf("MAPACHE", "ANDROID", "KOTLIN", "AHORCADO")
+        var palabraSecreta by remember { mutableStateOf(palabras.random()) }
 
-        IconButton(
-            onClick = { /* acción volver */ },
-            modifier = Modifier
-                .align(Alignment.TopStart)
-                .padding(16.dp)
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.icono_),
-                contentDescription = "Volver",
-                tint = Color.Black,
-                modifier = Modifier
-                    .size(60.dp)
-                    .clickable { navController.popBackStack() }
+        var letrasUsadas by remember { mutableStateOf(setOf<Char>()) }
+        var errores by remember { mutableStateOf(0) }
+
+        val palabraMostrada = palabraSecreta.map { letra ->
+            if (letrasUsadas.contains(letra)) letra else '_'
+        }.joinToString(" ")
+
+        val juegoGanado = !palabraMostrada.contains('_')
+        val juegoPerdido = errores >= 6
+
+        Box(modifier = Modifier.fillMaxSize()) {
+            // Fondo
+            Image(
+                painter = painterResource(id = R.drawable.fondoahorcado),
+                contentDescription = "Fondo estrellado",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
             )
-        }
-        IconButton(
-            onClick = { /* acción sonido */ },
-            modifier = Modifier
-                .align(Alignment.TopEnd)
-                .padding(16.dp)
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.sonido),
-                contentDescription = "Sonido",
-                tint = Color.Unspecified,
+
+            // Botón Volver
+            IconButton(
+                onClick = { navController.popBackStack() },
                 modifier = Modifier
-                    .size(50.dp)
-                    .align(Alignment.TopEnd)
-            )
-        }
-        Box(
-            modifier = Modifier
-                .align(Alignment.Center)
-                .padding(24.dp)
-                .fillMaxWidth()
-                .fillMaxHeight(0.7f)
-                .background(
-                    Color.White.copy(alpha = 0.2f), // transparencia del panel
-                    shape = RoundedCornerShape(25.dp)
-                )
-                .border(2.dp, Color.White.copy(alpha = 0.5f), RoundedCornerShape(25.dp)),
-            contentAlignment = Alignment.Center
-        ) {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.SpaceEvenly,
-                modifier = Modifier.fillMaxSize().padding(16.dp)
+                    .align(Alignment.TopStart)
+                    .padding(16.dp)
             ) {
-
-                Text(
-                    text = "┌────┐\n│\n│\n│",
-                    color = Color.White,
-                    fontSize = 22.sp,
-                    fontFamily = FontFamily.Monospace
+                Icon(
+                    painter = painterResource(id = R.drawable.icono_),
+                    contentDescription = "Volver",
+                    tint = Color.Black,
+                    modifier = Modifier.size(40.dp)
                 )
+            }
 
-                Text(
-                    text = "_______",
-                    color = Color.White,
-                    fontSize = 30.sp,
-                    fontWeight = FontWeight.Bold,
-                    letterSpacing = 8.sp
+            // Botón sonido
+            IconButton(
+                onClick = { /* acción sonido */ },
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .padding(16.dp)
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.sonido),
+                    contentDescription = "Sonido",
+                    tint = Color.Unspecified,
+                    modifier = Modifier.size(40.dp)
                 )
+            }
 
-                val letras = listOf('A', 'C', 'Z', 'M', 'V', 'O', 'E', 'N', 'U', 'G', 'I', 'T')
-
-                LazyVerticalGrid(
-                    columns = GridCells.Fixed(4),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                    modifier = Modifier.padding(top = 16.dp)
+            // Contenedor translúcido
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth(0.9f)
+                    .fillMaxHeight(0.8f)
+                    .align(Alignment.Center)
+                    .background(Color.White.copy(alpha = 0.15f), RoundedCornerShape(30.dp))
+                    .border(2.dp, Color.White.copy(alpha = 0.4f), RoundedCornerShape(30.dp))
+                    .padding(20.dp)
+            ) {
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.SpaceBetween
                 ) {
-                    items(letras) { letra ->
+
+                    // Dibujo del ahorcado
+                    Spacer(modifier = Modifier.height(16.dp))
+                    AhorcadoDibujo(errores)
+
+                    // Palabra mostrada
+                    Text(
+                        text = palabraMostrada,
+                        color = Color.White,
+                        fontSize = 30.sp,
+                        fontWeight = FontWeight.Bold,
+                        letterSpacing = 8.sp,
+                        modifier = Modifier.padding(vertical = 12.dp)
+                    )
+
+                    // 🔹 Teclado ajustado
+                    val letras = ('A'..'Z').toList()
+                    LazyVerticalGrid(
+                        columns = GridCells.Fixed(6), // más columnas, mejor distribución
+                        horizontalArrangement = Arrangement.spacedBy(4.dp),
+                        verticalArrangement = Arrangement.spacedBy(4.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 4.dp)
+                    ) {
+                        items(letras) { letra ->
+                            val usada = letrasUsadas.contains(letra)
+                            Button(
+                                onClick = {
+                                    if (!usada && !juegoGanado && !juegoPerdido) {
+                                        letrasUsadas = letrasUsadas + letra
+                                        if (!palabraSecreta.contains(letra)) {
+                                            errores++
+                                        }
+                                    }
+                                },
+                                enabled = !usada && !juegoGanado && !juegoPerdido,
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = if (usada) Color.Gray.copy(alpha = 0.5f)
+                                    else Color(0xFFF5EAD7)
+                                ),
+                                modifier = Modifier
+                                    .size(45.dp) // antes 65dp → más pequeño
+                                    .clip(RoundedCornerShape(12.dp))
+                            ) {
+                                Text(
+                                    text = letra.toString(),
+                                    color = Color.Black,
+                                    fontSize = 18.sp, // antes 22sp → más equilibrado
+                                    fontWeight = FontWeight.Bold
+                                )
+                            }
+                        }
+                    }
+
+                    // Mensaje de resultado
+                    if (juegoGanado || juegoPerdido) {
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(
+                            text = if (juegoGanado) "🎉 ¡Ganaste!" else "💀 Perdiste. Era: $palabraSecreta",
+                            color = if (juegoGanado) Color(0xFFB0F2B6) else Color(0xFFF2B6B6),
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(vertical = 10.dp)
+                        )
+
                         Button(
-                            onClick = { /* verificar letra */ },
-                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFF5EAD7)),
-                            modifier = Modifier
-                                .size(70.dp)
-                                .clip(RoundedCornerShape(12.dp))
+                            onClick = {
+                                palabraSecreta = palabras.random()
+                                letrasUsadas = emptySet()
+                                errores = 0
+                            },
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFF5EAD7))
                         ) {
                             Text(
-                                text = letra.toString(),
+                                "Jugar de nuevo",
                                 color = Color.Black,
-                                fontSize = 24.sp,
                                 fontWeight = FontWeight.Bold
                             )
                         }
@@ -150,48 +214,40 @@ fun PantallaAhorcado(navController: NavController,) {
             }
         }
     }
-}
+    }
 
-@Composable
+        @Composable
 fun AhorcadoDibujo(errores: Int) {
     Canvas(
         modifier = Modifier
             .fillMaxWidth()
-            .height(300.dp)
+            .height(320.dp) // ⬆️ aumentamos la altura
+            .padding(top = 16.dp)
     ) {
-        // Estructura fija (base)
-        drawLine(Color.White, start = Offset(100f, 280f), end = Offset(300f, 280f), strokeWidth = 10f)
-        drawLine(Color.White, start = Offset(200f, 280f), end = Offset(200f, 50f), strokeWidth = 10f)
-        drawLine(Color.White, start = Offset(200f, 50f), end = Offset(300f, 50f), strokeWidth = 10f)
-        drawLine(Color.White, start = Offset(300f, 50f), end = Offset(300f, 80f), strokeWidth = 10f)
+        // Base más grande
+        val baseY = size.height * 0.9f
+        val baseXStart = size.width * 0.3f
+        val baseXEnd = size.width * 0.7f
+        val posteX = size.width * 0.4f
+        val cabezaX = size.width * 0.6f
+        val cabezaY = size.height * 0.3f
 
-        // Partes del cuerpo que aparecen según los errores
-        if (errores >= 1) {
-            // Cabeza
-            drawCircle(Color.White, radius = 20f, center = Offset(300f, 100f), style = Stroke(width = 5f))
-        }
-        if (errores >= 2) {
-            // Cuerpo
-            drawLine(Color.White, start = Offset(300f, 120f), end = Offset(300f, 180f), strokeWidth = 5f)
-        }
-        if (errores >= 3) {
-            // Brazo izquierdo
-            drawLine(Color.White, start = Offset(300f, 130f), end = Offset(270f, 160f), strokeWidth = 5f)
-        }
-        if (errores >= 4) {
-            // Brazo derecho
-            drawLine(Color.White, start = Offset(300f, 130f), end = Offset(330f, 160f), strokeWidth = 5f)
-        }
-        if (errores >= 5) {
-            // Pierna izquierda
-            drawLine(Color.White, start = Offset(300f, 180f), end = Offset(270f, 220f), strokeWidth = 5f)
-        }
-        if (errores >= 6) {
-            // Pierna derecha
-            drawLine(Color.White, start = Offset(300f, 180f), end = Offset(330f, 220f), strokeWidth = 5f)
-        }
+        // Estructura
+        drawLine(Color.White, Offset(baseXStart, baseY), Offset(baseXEnd, baseY), 10f) // base
+        drawLine(Color.White, Offset(posteX, baseY), Offset(posteX, cabezaY - 80f), 10f) // poste vertical
+        drawLine(Color.White, Offset(posteX, cabezaY - 80f), Offset(cabezaX, cabezaY - 80f), 10f) // barra superior
+        drawLine(Color.White, Offset(cabezaX, cabezaY - 80f), Offset(cabezaX, cabezaY - 50f), 8f) // cuerda
+
+        // Partes del cuerpo (más grandes y centradas)
+        if (errores >= 1) drawCircle(Color.White, 40f, Offset(cabezaX, cabezaY), style = Stroke(6f)) // cabeza
+        if (errores >= 2) drawLine(Color.White, Offset(cabezaX, cabezaY + 40f), Offset(cabezaX, cabezaY + 140f), 8f) // cuerpo
+        if (errores >= 3) drawLine(Color.White, Offset(cabezaX, cabezaY + 60f), Offset(cabezaX - 40f, cabezaY + 100f), 8f) // brazo izq
+        if (errores >= 4) drawLine(Color.White, Offset(cabezaX, cabezaY + 60f), Offset(cabezaX + 40f, cabezaY + 100f), 8f) // brazo der
+        if (errores >= 5) drawLine(Color.White, Offset(cabezaX, cabezaY + 140f), Offset(cabezaX - 40f, cabezaY + 200f), 8f) // pierna izq
+        if (errores >= 6) drawLine(Color.White, Offset(cabezaX, cabezaY + 140f), Offset(cabezaX + 40f, cabezaY + 200f), 8f) // pierna der
     }
 }
+
 
 @Preview(showBackground = true, name = "Preview")
 @Composable

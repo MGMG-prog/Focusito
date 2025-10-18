@@ -49,14 +49,6 @@ fun quiz1preguntal(navController: NavController,
     )
     Row (modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
         Icon(
-            imageVector = Icons.Filled.ArrowBack,
-            contentDescription = null,
-            tint = Color.Yellow,
-            modifier = Modifier
-                .size(50.dp)
-                .clickable { navController.popBackStack() }
-        )
-        Icon(
             painter = painterResource(id = R.drawable.sonido),
             contentDescription = "Sonido",
             tint = Color.Unspecified,
@@ -137,7 +129,7 @@ fun ny4(navController: NavController) {
         Spacer(modifier = Modifier.height(20.dp))
 
         Button(
-            {navController.navigate(Screen.quiz1pregunta4.route)},
+            {navController.navigate(Screen.quiz1pregunta5.route)},
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFc3d9f8)),
             shape = RoundedCornerShape(12.dp),
             modifier = Modifier
