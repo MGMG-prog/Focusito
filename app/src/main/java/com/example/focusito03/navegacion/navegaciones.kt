@@ -64,7 +64,7 @@ import com.example.focusito03.interfaces.tuntu
 import com.example.focusito03.interfaces.tuntun
 
 @Composable
-fun tress(modifier: Modifier = Modifier) {
+fun Navigate(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
 
     NavHost(
@@ -72,7 +72,6 @@ fun tress(modifier: Modifier = Modifier) {
         startDestination = Screen.inicio.route,
         modifier = modifier
     ) {
-
         composable(Screen.inicio.route) { Pantallainicio(navController) }
         composable(Screen.login.route) { Login(navController) }
         composable(Screen.registrate.route) { registro(navController) }

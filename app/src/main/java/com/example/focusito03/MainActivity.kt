@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -12,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
-import com.example.focusito03.navegacion.tress
+import com.example.focusito03.navegacion.Navigate
 import com.example.focusito03.ui.theme.FOCUSITO03Theme
 
 class MainActivity : ComponentActivity() {
@@ -23,7 +22,7 @@ class MainActivity : ComponentActivity() {
             FOCUSITO03Theme {
                 val navController = rememberNavController()
                 Scaffold { innerPadding ->
-                    tress(modifier = Modifier.padding(innerPadding))
+                    Navigate(modifier = Modifier.padding(innerPadding))
                 }
             }
 

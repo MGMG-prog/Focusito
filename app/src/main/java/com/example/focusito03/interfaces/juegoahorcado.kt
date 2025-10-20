@@ -4,10 +4,10 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,12 +19,12 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextFieldDefaults.colors
+import androidx.compose.material3.OutlinedTextFieldDefaults.contentPadding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -35,13 +35,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Canvas
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PaintingStyle.Companion.Stroke
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -49,6 +46,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
+import com.example.focusito03.navegacion.Screen
 
 @Composable
 fun PantallaAhorcado(navController: NavController,) {
@@ -61,7 +59,8 @@ fun PantallaAhorcado(navController: NavController,) {
             contentDescription = "Fondo estrellado",
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop
-        )// 🔤 Palabras posibles
+        )
+
         val palabras = listOf("MAPACHE", "ANDROID", "KOTLIN", "AHORCADO")
         var palabraSecreta by remember { mutableStateOf(palabras.random()) }
 
@@ -76,15 +75,12 @@ fun PantallaAhorcado(navController: NavController,) {
         val juegoPerdido = errores >= 6
 
         Box(modifier = Modifier.fillMaxSize()) {
-            // Fondo
             Image(
                 painter = painterResource(id = R.drawable.fondoahorcado),
                 contentDescription = "Fondo estrellado",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
             )
-
-            // Botón Volver
             IconButton(
                 onClick = { navController.popBackStack() },
                 modifier = Modifier
@@ -98,8 +94,6 @@ fun PantallaAhorcado(navController: NavController,) {
                     modifier = Modifier.size(40.dp)
                 )
             }
-
-            // Botón sonido
             IconButton(
                 onClick = { /* acción sonido */ },
                 modifier = Modifier
@@ -113,8 +107,6 @@ fun PantallaAhorcado(navController: NavController,) {
                     modifier = Modifier.size(40.dp)
                 )
             }
-
-            // Contenedor translúcido
             Box(
                 modifier = Modifier
                     .fillMaxWidth(0.9f)
@@ -129,25 +121,19 @@ fun PantallaAhorcado(navController: NavController,) {
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
-
-                    // Dibujo del ahorcado
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(8.dp))
                     AhorcadoDibujo(errores)
-
-                    // Palabra mostrada
                     Text(
                         text = palabraMostrada,
                         color = Color.White,
                         fontSize = 30.sp,
                         fontWeight = FontWeight.Bold,
                         letterSpacing = 8.sp,
-                        modifier = Modifier.padding(vertical = 12.dp)
+                        modifier = Modifier.padding(vertical = 5.dp)
                     )
-
-                    // 🔹 Teclado ajustado
-                    val letras = ('A'..'Z').toList()
+                    val letras = ('A'..'X').toList()
                     LazyVerticalGrid(
-                        columns = GridCells.Fixed(6), // más columnas, mejor distribución
+                        columns = GridCells.Fixed(6),
                         horizontalArrangement = Arrangement.spacedBy(4.dp),
                         verticalArrangement = Arrangement.spacedBy(4.dp),
                         modifier = Modifier
@@ -184,7 +170,6 @@ fun PantallaAhorcado(navController: NavController,) {
                         }
                     }
 
-                    // Mensaje de resultado
                     if (juegoGanado || juegoPerdido) {
                         Spacer(modifier = Modifier.height(10.dp))
                         Text(
@@ -194,7 +179,6 @@ fun PantallaAhorcado(navController: NavController,) {
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier.padding(vertical = 10.dp)
                         )
-
                         Button(
                             onClick = {
                                 palabraSecreta = palabras.random()
@@ -212,39 +196,62 @@ fun PantallaAhorcado(navController: NavController,) {
                     }
                 }
             }
+
+            Column(
+                modifier = Modifier
+                    .fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+
+                Spacer(modifier = Modifier.height(755.dp))
+
+                Button(
+                    onClick = { navController.navigate(route = Screen.comencemosconectores.route) },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFc3d9f8)),
+                    shape = RoundedCornerShape(size = 12.dp),
+                    modifier = Modifier
+                        .size(width = 250.dp, height = 60.dp)
+                ) {
+                    Text(
+                        text = "Siguiente",
+                        fontSize = 20.sp,
+                        color = Color.Black
+                    )
+                }
+            }
+
         }
     }
-    }
+}
 
-        @Composable
+@Composable
 fun AhorcadoDibujo(errores: Int) {
     Canvas(
         modifier = Modifier
             .fillMaxWidth()
-            .height(320.dp) // ⬆️ aumentamos la altura
+            .height(320.dp)
             .padding(top = 16.dp)
     ) {
-        // Base más grande
-        val baseY = size.height * 0.9f
+
+        val baseY = size.height * 0.8f
         val baseXStart = size.width * 0.3f
         val baseXEnd = size.width * 0.7f
         val posteX = size.width * 0.4f
         val cabezaX = size.width * 0.6f
         val cabezaY = size.height * 0.3f
 
-        // Estructura
-        drawLine(Color.White, Offset(baseXStart, baseY), Offset(baseXEnd, baseY), 10f) // base
-        drawLine(Color.White, Offset(posteX, baseY), Offset(posteX, cabezaY - 80f), 10f) // poste vertical
-        drawLine(Color.White, Offset(posteX, cabezaY - 80f), Offset(cabezaX, cabezaY - 80f), 10f) // barra superior
-        drawLine(Color.White, Offset(cabezaX, cabezaY - 80f), Offset(cabezaX, cabezaY - 50f), 8f) // cuerda
+        drawLine(Color.White, Offset(baseXStart, baseY), Offset(baseXEnd, baseY), 10f)
+        drawLine(Color.White, Offset(posteX, baseY), Offset(posteX, cabezaY - 80f), 10f)
+        drawLine(Color.White, Offset(posteX, cabezaY - 80f), Offset(cabezaX, cabezaY - 80f), 10f)
+        drawLine(Color.White, Offset(cabezaX, cabezaY - 80f), Offset(cabezaX, cabezaY - 50f), 8f)
 
-        // Partes del cuerpo (más grandes y centradas)
-        if (errores >= 1) drawCircle(Color.White, 40f, Offset(cabezaX, cabezaY), style = Stroke(6f)) // cabeza
-        if (errores >= 2) drawLine(Color.White, Offset(cabezaX, cabezaY + 40f), Offset(cabezaX, cabezaY + 140f), 8f) // cuerpo
-        if (errores >= 3) drawLine(Color.White, Offset(cabezaX, cabezaY + 60f), Offset(cabezaX - 40f, cabezaY + 100f), 8f) // brazo izq
-        if (errores >= 4) drawLine(Color.White, Offset(cabezaX, cabezaY + 60f), Offset(cabezaX + 40f, cabezaY + 100f), 8f) // brazo der
-        if (errores >= 5) drawLine(Color.White, Offset(cabezaX, cabezaY + 140f), Offset(cabezaX - 40f, cabezaY + 200f), 8f) // pierna izq
-        if (errores >= 6) drawLine(Color.White, Offset(cabezaX, cabezaY + 140f), Offset(cabezaX + 40f, cabezaY + 200f), 8f) // pierna der
+        if (errores >= 1) drawCircle(Color.White, 40f, Offset(cabezaX, cabezaY), style = Stroke(6f))
+        if (errores >= 2) drawLine(Color.White, Offset(cabezaX, cabezaY + 40f), Offset(cabezaX, cabezaY + 140f), 8f)
+        if (errores >= 3) drawLine(Color.White, Offset(cabezaX, cabezaY + 60f), Offset(cabezaX - 40f, cabezaY + 100f), 8f)
+        if (errores >= 4) drawLine(Color.White, Offset(cabezaX, cabezaY + 60f), Offset(cabezaX + 40f, cabezaY + 100f), 8f)
+        if (errores >= 5) drawLine(Color.White, Offset(cabezaX, cabezaY + 140f), Offset(cabezaX - 40f, cabezaY + 200f), 8f)
+        if (errores >= 6) drawLine(Color.White, Offset(cabezaX, cabezaY + 140f), Offset(cabezaX + 40f, cabezaY + 200f), 8f)
     }
 }
 

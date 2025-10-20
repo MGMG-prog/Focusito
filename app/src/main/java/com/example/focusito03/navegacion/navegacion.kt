@@ -1,8 +1,5 @@
 package com.example.focusito03.navegacion
 
-import com.example.focusito03.interfaces.estu
-
-
 sealed class Screen(val route: String
 ){
     object inicio: Screen("pantallaprincipal")

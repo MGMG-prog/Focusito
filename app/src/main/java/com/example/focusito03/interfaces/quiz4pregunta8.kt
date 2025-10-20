@@ -74,7 +74,6 @@ fun coco5() {
     ){
     }
 }
-
 @Composable
 fun Nahhhhh(navController: NavController) {
 
@@ -98,10 +97,10 @@ fun Nahhhhh(navController: NavController) {
 
         options.forEach { (key, text) ->
             val color = when {
-                selectedOption == null -> Color(0xFFCCCCCC)
-                selectedOption == key && key == correctAnswer -> Color(0xFF4CAF50)
-                selectedOption == key && key != correctAnswer -> Color(0xFFFF5252)
-                else -> Color(0xFFE0E0E0)
+                selectedOption == null -> Color(0xFFCCCCCC) // color neutro antes de elegir
+                selectedOption == key && key == correctAnswer -> Color(0xFF4CAF50) // verde correcto
+                selectedOption == key && key != correctAnswer -> Color(0xFFFF5252) // rojo incorrecto
+                else -> Color(0xFFE0E0E0) // neutro
             }
 
             Button(
@@ -126,7 +125,10 @@ fun Nahhhhh(navController: NavController) {
 
         Button(
             {navController.navigate(Screen.comencemosconectores.route)},
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFc3d9f8)),
+            enabled = selectedOption != null,
+            colors = ButtonDefaults.buttonColors(
+                containerColor = if (selectedOption != null) Color(0xFFc3d9f8) else Color(0xFFB0BEC5)
+            ),
             shape = RoundedCornerShape(12.dp),
             modifier = Modifier
                 .size(width = 250.dp, height = 60.dp)
@@ -135,6 +137,7 @@ fun Nahhhhh(navController: NavController) {
         }
     }
 }
+
 
 @Preview(showBackground = true, name = "Preview")
 @Composable
