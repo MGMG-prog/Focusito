@@ -56,7 +56,7 @@ fun juegosdecartas(navController: NavController ) {
             contentAlignment = Alignment.BottomEnd
         ) {
             Button(
-                onClick =  {navController.navigate(Screen.actividades.route)},
+                {navController.navigate(Screen.cartas.route)},
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.Transparent
                 ),

@@ -13,6 +13,7 @@ import com.example.focusito03.interfaces.PantallaConectores2
 import com.example.focusito03.interfaces.PantallaConectores3
 import com.example.focusito03.interfaces.PantallaConectores4
 import com.example.focusito03.interfaces.PantallaConectores5
+import com.example.focusito03.interfaces.PantallaJuego
 import com.example.focusito03.interfaces.Quiz4pregunta2
 import com.example.focusito03.interfaces.Quiz4pregunta3
 import com.example.focusito03.interfaces.Quiz4pregunta4
@@ -30,6 +31,7 @@ import com.example.focusito03.interfaces.fabut
 import com.example.focusito03.interfaces.fad
 import com.example.focusito03.interfaces.fon
 import com.example.focusito03.interfaces.fonfo
+import com.example.focusito03.interfaces.juegosdecartas
 import com.example.focusito03.interfaces.mop
 import com.example.focusito03.interfaces.mopi
 import com.example.focusito03.interfaces.poema
@@ -132,6 +134,9 @@ fun Navigate(modifier: Modifier = Modifier) {
         composable(Screen.conector5.route) { PantallaConectores5(navController) }
         // Actividades: ahorcado
         composable(Screen.ahorcado.route) { PantallaAhorcado(navController) }
+        //Actividades: juegodecartas
+        composable(Screen.juegosdecartas.route) { juegosdecartas(navController) }
+        composable(Screen.cartas.route) { PantallaJuego(navController) }
     }
 }
 

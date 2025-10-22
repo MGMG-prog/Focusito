@@ -77,7 +77,7 @@ fun estud(navController: NavController) {
             ) {
                 val items = listOf(
                     R.drawable.preguntas to Screen.quiz.route,
-                    R.drawable.juegosdecartas to Screen.roles.route,
+                    R.drawable.juegosdecartas to Screen.juegosdecartas.route,
                     R.drawable.cuentos to Screen.fabulasypoemas.route,
                     R.drawable.ahorcado to Screen.ahorcado.route
                 )
