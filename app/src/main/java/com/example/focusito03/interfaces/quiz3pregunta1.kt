@@ -106,7 +106,7 @@ fun nyv(navController: NavController) {
 
     var selectedOption by remember { mutableStateOf<String?>(null) }
 
-    val correctAnswer = "C"
+    val correctAnswer = "B"
 
     Column(
         modifier = Modifier

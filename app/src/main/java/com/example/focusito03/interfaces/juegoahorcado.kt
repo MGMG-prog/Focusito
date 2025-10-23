@@ -1,9 +1,11 @@
 package com.example.focusito03.interfaces
 
+import android.media.MediaPlayer
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -38,6 +40,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -49,11 +52,14 @@ import com.example.focusito03.R
 import com.example.focusito03.navegacion.Screen
 
 @Composable
-fun PantallaAhorcado(navController: NavController,) {
+fun ahorcadojuego(navController: NavController,) {
+
+
     Box(
         modifier = Modifier
             .fillMaxSize()
     ) {
+
         Image(
             painter = painterResource(id = R.drawable.fondoahorcado),
             contentDescription = "Fondo estrellado",
@@ -88,22 +94,9 @@ fun PantallaAhorcado(navController: NavController,) {
                     .padding(16.dp)
             ) {
                 Icon(
-                    painter = painterResource(id = R.drawable.icono_),
+                    painter = painterResource(id = R.drawable.flechablanca),
                     contentDescription = "Volver",
-                    tint = Color.Black,
-                    modifier = Modifier.size(40.dp)
-                )
-            }
-            IconButton(
-                onClick = { /* acción sonido */ },
-                modifier = Modifier
-                    .align(Alignment.TopEnd)
-                    .padding(16.dp)
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.sonido),
-                    contentDescription = "Sonido",
-                    tint = Color.Unspecified,
+                    tint = Color.White,
                     modifier = Modifier.size(40.dp)
                 )
             }
@@ -121,6 +114,11 @@ fun PantallaAhorcado(navController: NavController,) {
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
+                    Text(
+                        text = "Es un animal terrestre y viven en bosques",
+                        fontSize = 20.sp,
+                        color = Color.White
+                    )
                     Spacer(modifier = Modifier.height(8.dp))
                     AhorcadoDibujo(errores)
                     Text(
@@ -197,30 +195,6 @@ fun PantallaAhorcado(navController: NavController,) {
                 }
             }
 
-            Column(
-                modifier = Modifier
-                    .fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-
-                Spacer(modifier = Modifier.height(755.dp))
-
-                Button(
-                    onClick = { navController.navigate(route = Screen.comencemosconectores.route) },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFc3d9f8)),
-                    shape = RoundedCornerShape(size = 12.dp),
-                    modifier = Modifier
-                        .size(width = 250.dp, height = 60.dp)
-                ) {
-                    Text(
-                        text = "Siguiente",
-                        fontSize = 20.sp,
-                        color = Color.Black
-                    )
-                }
-            }
-
         }
     }
 }
@@ -258,5 +232,6 @@ fun AhorcadoDibujo(errores: Int) {
 @Preview(showBackground = true, name = "Preview")
 @Composable
 fun hoppppm() {
-    PantallaAhorcado(navController = rememberNavController())
+
+    ahorcadojuego(navController = rememberNavController())
 }

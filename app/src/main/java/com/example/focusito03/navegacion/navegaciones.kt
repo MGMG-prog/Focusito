@@ -7,7 +7,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.interfaces.Login
-import com.example.focusito03.interfaces.PantallaAhorcado
 import com.example.focusito03.interfaces.PantallaConectores
 import com.example.focusito03.interfaces.PantallaConectores2
 import com.example.focusito03.interfaces.PantallaConectores3
@@ -22,6 +21,7 @@ import com.example.focusito03.interfaces.Quiz4pregunta6
 import com.example.focusito03.interfaces.Quiz4pregunta7
 import com.example.focusito03.interfaces.Quiz4pregunta8
 import com.example.focusito03.interfaces.Quiz4preguntao
+import com.example.focusito03.interfaces.ahorcadojuego
 import com.example.focusito03.interfaces.because
 import com.example.focusito03.interfaces.conectores
 import com.example.focusito03.interfaces.estu
@@ -133,7 +133,7 @@ fun Navigate(modifier: Modifier = Modifier) {
         composable(Screen.conector4.route) { PantallaConectores4(navController) }
         composable(Screen.conector5.route) { PantallaConectores5(navController) }
         // Actividades: ahorcado
-        composable(Screen.ahorcado.route) { PantallaAhorcado(navController) }
+        composable(Screen.juegoahorcado.route) { ahorcadojuego(navController) }
         //Actividades: juegodecartas
         composable(Screen.juegosdecartas.route) { juegosdecartas(navController) }
         composable(Screen.cartas.route) { PantallaJuego(navController) }

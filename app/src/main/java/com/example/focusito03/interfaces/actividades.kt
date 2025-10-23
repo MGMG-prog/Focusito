@@ -65,7 +65,7 @@ fun estud(navController: NavController) {
             contentDescription = "Volver",
             tint = Color.Yellow,
             modifier = Modifier
-                .size(50.dp)
+                .size(70.dp)
                 .align(Alignment.TopStart)
                 .clickable { navController.popBackStack() }
         )
@@ -105,7 +105,7 @@ fun estud(navController: NavController) {
                     R.drawable.preguntas to Screen.quiz.route,
                     R.drawable.juegosdecartas to Screen.juegosdecartas.route,
                     R.drawable.cuentos to Screen.fabulasypoemas.route,
-                    R.drawable.ahorcado to Screen.ahorcado.route
+                    R.drawable.ahorcado to Screen.juegoahorcado .route
                 )
                 items(items) { (imagen, ruta) ->
                     Card(

@@ -50,7 +50,7 @@ fun preguntaoou(navController: NavController,
     val mediaPlayer = remember { MediaPlayer.create(context, R.raw.forest) }
 
     Image(
-        painter = painterResource(id = R.drawable.quiz3pregunta4),
+        painter = painterResource(id = R.drawable.quiz3pregunta0),
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier.fillMaxSize()

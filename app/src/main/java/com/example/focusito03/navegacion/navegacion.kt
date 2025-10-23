@@ -62,8 +62,8 @@ sealed class Screen(val route: String
     object conector4: Screen("conector4")
     object conector5: Screen("conector5")
     // Actividades: Ahorcado
-    object ahorcado: Screen("ahorcado")
+    object juegoahorcado: Screen("ahorcado")
     //Actividades: juegos de cartas
-    object juegosdecartas: Screen("ahorcado")
-    object cartas: Screen("ahorcado")
+    object juegosdecartas: Screen("cartas")
+    object cartas: Screen("juego de cartas")
 }

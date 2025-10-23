@@ -1,5 +1,6 @@
 package com.example.focusito03.interfaces
 
+import android.media.MediaPlayer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
@@ -9,6 +10,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,9 +20,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.focusito03.R
 import androidx.compose.material3.*
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-
 
 data class Carta(
     val id: Int,
@@ -49,7 +53,12 @@ fun generarCartas(): List<Carta> {
 fun PantallaJuego(navController: NavController) {
     var cartas by remember { mutableStateOf(generarCartas()) }
     var primeraCarta by remember { mutableStateOf<Carta?>(null) }
+    var bloqueo by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
+
+    val context = LocalContext.current
+    var musicaActiva by remember { mutableStateOf(true) }
+    val mediaPlayer = remember { MediaPlayer.create(context, R.raw.forest) }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
@@ -58,8 +67,40 @@ fun PantallaJuego(navController: NavController) {
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop
         )
-
-        // Contenido principal
+        Icon(
+            imageVector = Icons.Filled.ArrowBack,
+            contentDescription = "Volver",
+            tint = Color.Yellow,
+            modifier = Modifier
+                .size(70.dp)
+                .align(Alignment.TopStart)
+                .clickable { navController.popBackStack() }
+        )
+        IconButton(
+            onClick = { /* acción sonido */ },
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .padding(16.dp)
+        ) {
+            Image(
+                painter = painterResource(
+                    id = if (musicaActiva) R.drawable.sonido else R.drawable.sonidooff
+                ),
+                contentDescription = "Botón de sonido",
+                modifier = Modifier
+                    .size(48.dp)
+                    .align(Alignment.TopEnd)
+                    .padding(16.dp)
+                    .clickable {
+                        if (musicaActiva) {
+                            mediaPlayer.pause()
+                        } else {
+                            mediaPlayer.start()
+                        }
+                        musicaActiva = !musicaActiva
+                    }
+            )
+        }
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -67,8 +108,6 @@ fun PantallaJuego(navController: NavController) {
             verticalArrangement = Arrangement.SpaceBetween,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
-            // 🟩 Cuadrícula de cartas (4x4)
             LazyVerticalGrid(
                 columns = GridCells.Fixed(4),
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
@@ -81,34 +120,37 @@ fun PantallaJuego(navController: NavController) {
                     CartaView(
                         carta = carta,
                         onClick = {
-                            if (!carta.volteada && !carta.encontrada) {
-                                cartas = cartas.map {
-                                    if (it.id == carta.id) it.copy(volteada = true) else it
-                                }
+                            // 🧠 Si el juego está bloqueado o la carta ya fue volteada/encontrada, no hacer nada
+                            if (bloqueo || carta.volteada || carta.encontrada) return@CartaView
 
-                                if (primeraCarta == null) {
-                                    primeraCarta = carta
+                            cartas = cartas.map {
+                                if (it.id == carta.id) it.copy(volteada = true) else it
+                            }
+
+                            if (primeraCarta == null) {
+                                primeraCarta = carta
+                            } else {
+                                val segunda = carta
+                                bloqueo = true // 🚫 Bloquear clicks adicionales
+
+                                if (primeraCarta!!.imagen == segunda.imagen) {
+                                    cartas = cartas.map {
+                                        if (it.imagen == segunda.imagen)
+                                            it.copy(encontrada = true)
+                                        else it
+                                    }
+                                    primeraCarta = null
+                                    bloqueo = false // 🔓 Desbloquear
                                 } else {
-                                    val segunda = carta
-                                    if (primeraCarta!!.imagen == segunda.imagen) {
-                                        // ✅ Pareja encontrada
+                                    scope.launch {
+                                        delay(1000)
                                         cartas = cartas.map {
-                                            if (it.imagen == segunda.imagen)
-                                                it.copy(encontrada = true)
+                                            if (!it.encontrada)
+                                                it.copy(volteada = false)
                                             else it
                                         }
                                         primeraCarta = null
-                                    } else {
-                                        // ❌ No coinciden → se voltean después de 1 segundo
-                                        scope.launch {
-                                            delay(1000)
-                                            cartas = cartas.map {
-                                                if (!it.encontrada)
-                                                    it.copy(volteada = false)
-                                                else it
-                                            }
-                                            primeraCarta = null
-                                        }
+                                        bloqueo = false // 🔓 Desbloquear
                                     }
                                 }
                             }

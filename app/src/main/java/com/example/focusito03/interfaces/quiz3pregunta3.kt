@@ -107,7 +107,7 @@ fun nyvnt(navController: NavController) {
 
     var selectedOption by remember { mutableStateOf<String?>(null) }
 
-    val correctAnswer = "B"
+    val correctAnswer = "C"
 
     Column(
         modifier = Modifier
@@ -118,9 +118,9 @@ fun nyvnt(navController: NavController) {
         Spacer(modifier = Modifier.height(195.dp))
 
         val options = listOf(
-            "A" to "A. Para concluir un párrafo.",
-            "B" to "B. Para agregar énfasis , sentimientos y emociones.",
-            "C" to "C. Para hacer preguntas."
+            "A" to "A. Para finalizar  un párrafo.",
+            "B" to "B. Para reemplazar signos de exclamación.",
+            "C" to "C. Para separar elementos, aclarar ideas,hacer pausas y evitar confusiones."
         )
 
         options.forEach { (key, text) ->
