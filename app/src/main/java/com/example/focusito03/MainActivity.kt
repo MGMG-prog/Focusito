@@ -13,6 +13,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.navegacion.Navigate
 import com.example.focusito03.ui.theme.FOCUSITO03Theme
+import android.media.MediaPlayer
+import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalContext
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +40,26 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         modifier = modifier
     )
 }
+
+@Composable
+fun MusicaFondo() {
+    val context = LocalContext.current
+    val mediaPlayer = remember { MediaPlayer.create(context, R.raw.forest) }
+
+    LaunchedEffect(Unit) {
+        mediaPlayer.isLooping = true
+        mediaPlayer.start()
+    }
+
+    DisposableEffect(Unit) {
+        onDispose {
+            mediaPlayer.release()
+        }
+    }
+}
+
+
+
 
 @Preview(showBackground = true)
 @Composable

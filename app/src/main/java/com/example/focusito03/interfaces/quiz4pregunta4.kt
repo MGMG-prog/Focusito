@@ -1,11 +1,15 @@
 package com.example.focusito03.interfaces
 
+import android.media.MediaPlayer
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -25,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -37,19 +42,39 @@ import com.example.focusito03.navegacion.Screen
 @Composable
 fun Quiz4pregunta4(navController: NavController,
 ) {
+    val context = LocalContext.current
+    var musicaActiva by remember { mutableStateOf(true) }
+    val mediaPlayer = remember { MediaPlayer.create(context, R.raw.forest) }
+
+
     Image(
         painter = painterResource(id = R.drawable.quiz4pregunta4),
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier.fillMaxSize()
     )
-    Row (modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
-        Icon(
-            painter = painterResource(id = R.drawable.sonido),
-            contentDescription = "Sonido",
-            tint = Color.Unspecified,
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight()
+    ) {
+        Image(
+            painter = painterResource(
+                id = if (musicaActiva) R.drawable.sonido else R.drawable.sonidooff
+            ),
+            contentDescription = "Botón de sonido",
             modifier = Modifier
-                .size(50.dp)
+                .size(70.dp)
+                .align(Alignment.TopEnd)
+                .padding(16.dp)
+                .clickable {
+                    if (musicaActiva) {
+                        mediaPlayer.pause()
+                    } else {
+                        mediaPlayer.start()
+                    }
+                    musicaActiva = !musicaActiva
+                }
         )
     }
     coco1()
@@ -122,16 +147,24 @@ fun nah(navController: NavController) {
             }
         }
 
-        Spacer(modifier = Modifier.height(20.dp))
 
         Button(
-            {navController.navigate(Screen.quiz4pregunta5.route)},
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFc3d9f8)),
+            onClick = {
+                navController.navigate(Screen.quiz4pregunta5.route)
+            },
+            enabled = selectedOption != null,
+            colors = ButtonDefaults.buttonColors(
+                containerColor = if (selectedOption != null) Color(0xFFc3d9f8) else Color(0xFFB0B0B0)
+            ),
             shape = RoundedCornerShape(12.dp),
             modifier = Modifier
                 .size(width = 250.dp, height = 60.dp)
         ) {
-            Text("Siguiente", fontSize = 20.sp, color = Color.Black)
+            Text(
+                text = "Siguiente",
+                fontSize = 20.sp,
+                color = if (selectedOption != null) Color.Black else Color.DarkGray
+            )
         }
     }
 }

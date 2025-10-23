@@ -233,7 +233,6 @@ fun AhorcadoDibujo(errores: Int) {
             .height(320.dp)
             .padding(top = 16.dp)
     ) {
-
         val baseY = size.height * 0.8f
         val baseXStart = size.width * 0.3f
         val baseXEnd = size.width * 0.7f

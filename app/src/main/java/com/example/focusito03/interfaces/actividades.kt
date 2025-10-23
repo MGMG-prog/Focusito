@@ -1,5 +1,6 @@
 package com.example.focusito03.interfaces
 
+import android.media.MediaPlayer
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -23,10 +24,16 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -37,6 +44,15 @@ import com.example.focusito03.navegacion.Screen
 
 @Composable
 fun estud(navController: NavController) {
+
+    val context = LocalContext.current
+    var musicaActiva by remember { mutableStateOf(true) }
+    val mediaPlayer = remember { MediaPlayer.create(context, R.raw.forest) }
+
+    LaunchedEffect(Unit) {
+        mediaPlayer.isLooping = true
+        mediaPlayer.start()
+    }
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.fondoactividades),
@@ -53,13 +69,23 @@ fun estud(navController: NavController) {
                 .align(Alignment.TopStart)
                 .clickable { navController.popBackStack() }
         )
-        Icon(
-            painter = painterResource(id = R.drawable.sonido),
-            contentDescription = "Sonido",
-            tint = Color.Unspecified,
+        Image(
+            painter = painterResource(
+                id = if (musicaActiva) R.drawable.sonido else R.drawable.sonidooff
+            ),
+            contentDescription = "Botón de sonido",
             modifier = Modifier
-                .size(50.dp)
+                .size(48.dp)
                 .align(Alignment.TopEnd)
+                .padding(16.dp)
+                .clickable {
+                    if (musicaActiva) {
+                        mediaPlayer.pause()
+                    } else {
+                        mediaPlayer.start()
+                    }
+                    musicaActiva = !musicaActiva
+                }
         )
         Column(
             modifier = Modifier
