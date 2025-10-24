@@ -114,12 +114,7 @@ fun ahorcadojuego(navController: NavController,) {
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text(
-                        text = "Es un animal terrestre y viven en bosques",
-                        fontSize = 20.sp,
-                        color = Color.White
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(1.dp))
                     AhorcadoDibujo(errores)
                     Text(
                         text = palabraMostrada,
@@ -155,19 +150,23 @@ fun ahorcadojuego(navController: NavController,) {
                                     else Color(0xFFF5EAD7)
                                 ),
                                 modifier = Modifier
-                                    .size(45.dp) // antes 65dp → más pequeño
+                                    .size(45.dp)
                                     .clip(RoundedCornerShape(12.dp))
                             ) {
                                 Text(
                                     text = letra.toString(),
                                     color = Color.Black,
-                                    fontSize = 18.sp, // antes 22sp → más equilibrado
+                                    fontSize = 18.sp,
                                     fontWeight = FontWeight.Bold
                                 )
                             }
                         }
                     }
-
+                    Text(
+                        text = "Es un animal terrestre y vive en bosques",
+                        fontSize = 20.sp,
+                        color = Color.White
+                    )
                     if (juegoGanado || juegoPerdido) {
                         Spacer(modifier = Modifier.height(10.dp))
                         Text(
@@ -194,7 +193,6 @@ fun ahorcadojuego(navController: NavController,) {
                     }
                 }
             }
-
         }
     }
 }

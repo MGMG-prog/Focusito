@@ -23,7 +23,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.R
 import com.example.focusito03.navegacion.Screen
 
-
 @Composable
 fun quiz2(
     navController: NavController,

@@ -131,8 +131,8 @@ fun ny1(navController: NavController) {
         options.forEach { (key, text) ->
             val color = when {
                 selectedOption == null -> Color(0xFFCCCCCC)
-                selectedOption == key && key == correctAnswer -> Color(0xFF4CAF50) // Verde
-                selectedOption == key && key != correctAnswer -> Color(0xFFFF5252) // Rojo
+                selectedOption == key && key == correctAnswer -> Color(0xFF4CAF50)
+                selectedOption == key && key != correctAnswer -> Color(0xFFFF5252)
                 else -> Color(0xFFE0E0E0)
             }
 

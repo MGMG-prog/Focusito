@@ -88,7 +88,7 @@ fun PantallaJuego(navController: NavController) {
                 ),
                 contentDescription = "Botón de sonido",
                 modifier = Modifier
-                    .size(48.dp)
+                    .size(100.dp)
                     .align(Alignment.TopEnd)
                     .padding(16.dp)
                     .clickable {
