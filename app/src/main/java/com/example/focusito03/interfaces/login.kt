@@ -80,7 +80,7 @@ fun Login(
                 onValueChange = { correo = it },
                 placeholder = {
                     Text(
-                        "Correo electrónico",
+                        "Correo electrónico",color = Color(0xFF051d40)
                     )
                 },
                 shape = RoundedCornerShape(25.dp),
@@ -107,7 +107,7 @@ fun Login(
             TextField(
                 value = contrasenia,
                 onValueChange = { contrasenia = it },
-                placeholder = { Text("Contraseña") },
+                placeholder = { Text("Contraseña",color = Color(0xFF051d40)) },
                 shape = RoundedCornerShape(25.dp),
                 leadingIcon = {
                     Icon(

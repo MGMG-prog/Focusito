@@ -13,12 +13,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -69,30 +72,21 @@ fun registro(
                 .width(250.dp),
             tint = Color.Unspecified,
         )
-        OutlinedTextField(
-            value = nombre,
-            onValueChange = { nombre = it },
-            label = { Text("Nombre completo") },
-            shape = RoundedCornerShape(50.dp),
-            singleLine = true,
-            modifier = Modifier
-                .fillMaxWidth(0.8f)
-                .height(56.dp)
-                .border(1.dp, Color.Gray, RoundedCornerShape(25.dp)),
-            colors = TextFieldDefaults.colors(
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent,
-                focusedContainerColor = Color.White,
-                unfocusedContainerColor = Color.White
-            )
-        )
-        Spacer(modifier = Modifier.height(25.dp))
-        OutlinedTextField(
+        TextField(
             value = correo,
             onValueChange = { correo = it },
-            label = { Text("Correo electrónico") },
-            shape = RoundedCornerShape(50.dp),
-            singleLine = true,
+            placeholder = {
+                Text(
+                    "Nombre completo",color = Color(0xFF051d40)
+                )
+            },
+            shape = RoundedCornerShape(25.dp),
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.AccountCircle,
+                    contentDescription = "Buscar"
+                )
+            },
             modifier = Modifier
                 .fillMaxWidth(0.8f)
                 .height(56.dp)
@@ -105,12 +99,48 @@ fun registro(
             )
         )
         Spacer(modifier = Modifier.height(25.dp))
-        OutlinedTextField(
-            value = contrasena,
-            onValueChange = { contrasena = it },
-            label = { Text("Contraseña") },
-            shape = RoundedCornerShape(50.dp),
-            singleLine = true,
+        TextField(
+            value = correo,
+            onValueChange = { correo = it },
+            placeholder = {
+                Text(
+                    "Correo electrónico",color = Color(0xFF051d40)
+                )
+            },
+            shape = RoundedCornerShape(25.dp),
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.AccountCircle,
+                    contentDescription = "Buscar"
+                )
+            },
+            modifier = Modifier
+                .fillMaxWidth(0.8f)
+                .height(56.dp)
+                .border(1.dp, Color.Gray, RoundedCornerShape(25.dp)),
+            colors = TextFieldDefaults.colors(
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent,
+                focusedContainerColor = Color.White,
+                unfocusedContainerColor = Color.White
+            )
+        )
+        Spacer(modifier = Modifier.height(25.dp))
+        TextField(
+            value = correo,
+            onValueChange = { correo = it },
+            placeholder = {
+                Text(
+                    "Contraseña",color = Color(0xFF051d40)
+                )
+            },
+            shape = RoundedCornerShape(25.dp),
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.AccountCircle,
+                    contentDescription = "Buscar"
+                )
+            },
             modifier = Modifier
                 .fillMaxWidth(0.8f)
                 .height(56.dp)
