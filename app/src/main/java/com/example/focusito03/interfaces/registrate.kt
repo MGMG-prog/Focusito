@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -84,7 +85,8 @@ fun registro(
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.AccountCircle,
-                    contentDescription = "Buscar"
+                    contentDescription = "Buscar",
+                    tint = Color(0xFF000000)
                 )
             },
             modifier = Modifier
@@ -111,7 +113,8 @@ fun registro(
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.AccountCircle,
-                    contentDescription = "Buscar"
+                    contentDescription = "Buscar",
+                    tint = Color(0xFF000000)
                 )
             },
             modifier = Modifier
@@ -137,8 +140,9 @@ fun registro(
             shape = RoundedCornerShape(25.dp),
             leadingIcon = {
                 Icon(
-                    imageVector = Icons.Default.AccountCircle,
-                    contentDescription = "Buscar"
+                    imageVector = Icons.Default.Lock,
+                    contentDescription = "Buscar",
+                    tint = Color(0xFF000000)
                 )
             },
             modifier = Modifier

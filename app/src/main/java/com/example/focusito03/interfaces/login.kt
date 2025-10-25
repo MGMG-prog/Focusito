@@ -87,7 +87,8 @@ fun Login(
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Default.AccountCircle,
-                        contentDescription = "Buscar"
+                        contentDescription = "Buscar",
+                        tint = Color(0xFF000000)
                     )
                 },
                 modifier = Modifier
@@ -112,7 +113,8 @@ fun Login(
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Default.Lock,
-                        contentDescription = "Buscar"
+                        contentDescription = "Buscar",
+                        tint = Color(0xFF000000)
                     )
                 },
                 modifier = Modifier
