@@ -119,9 +119,9 @@ fun nononoyno(navController: NavController) {
         Spacer(modifier = Modifier.height(195.dp))
 
         val options = listOf(
-            "A" to "A. Una palabra con un significado  igual o parecido al de la otra palabra .",
-            "B" to "B. Una palabra que significa  lo contrario de otra.",
-            "C" to "C. Es un signo de puntuación que se usa entre oraciones."
+            "A" to "A. Para destacar citas, títulos,expresiones y palabras extranjeras.",
+            "B" to "B. Para separar párrafos.",
+            "C" to "C. Para hacer pausas largas."
         )
 
         options.forEach { (key, text) ->

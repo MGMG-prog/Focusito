@@ -1,5 +1,6 @@
 package com.example.focusito03.interfaces
 
+import android.media.MediaPlayer
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -35,6 +37,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -48,6 +51,11 @@ import androidx.compose.ui.res.painterResource as painterResource1
 
 @Composable
 fun profe (navController: NavController) {
+
+    val context = LocalContext.current
+    var musicaActiva by remember { mutableStateOf(true) }
+    val mediaPlayer = remember { MediaPlayer.create(context, R.raw.forest) }
+
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.fondo),
@@ -64,13 +72,23 @@ fun profe (navController: NavController) {
                 .align(Alignment.TopStart)
                 .clickable { navController.popBackStack() }
         )
-        Icon(
-            painter = painterResource(id = R.drawable.sonido),
-            contentDescription = "Sonido",
-            tint = Color.Unspecified,
+        Image(
+            painter = painterResource(
+                id = if (musicaActiva) R.drawable.sonido else R.drawable.sonidooff
+            ),
+            contentDescription = "Botón de sonido",
             modifier = Modifier
-                .size(50.dp)
+                .size(48.dp)
                 .align(Alignment.TopEnd)
+                .padding(16.dp)
+                .clickable {
+                    if (musicaActiva) {
+                        mediaPlayer.pause()
+                    } else {
+                        mediaPlayer.start()
+                    }
+                    musicaActiva = !musicaActiva
+                }
         )
         Column(
             modifier = Modifier
@@ -130,14 +148,14 @@ fun profe (navController: NavController) {
                     horizontalArrangement = Arrangement.Start
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.notes),
+                        painter = painterResource(id = R.drawable.punto),
                         contentDescription = "icon",
                         modifier = Modifier
                             .size(100.dp)
                     )
                     Spacer(modifier = Modifier.width(12.dp))
                     Text(
-                        text = "Notas",
+                        text = "puntos",
                         fontSize = 20.sp,
                         color = Color.Black
                     )
