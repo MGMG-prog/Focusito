@@ -55,6 +55,7 @@ sealed class Screen(val route: String
     object quiz4pregunta6: Screen("quiz4pregunta6")
     object quiz4pregunta7: Screen("quiz4pregunta7")
     object quiz4pregunta8: Screen("quiz4pregunta8")
+    object repasemos: Screen("repasemos")
     object comencemosconectores: Screen("comencemosconectores")
     object conector1: Screen("conector1")
     object conector2: Screen("conector2")
@@ -66,4 +67,5 @@ sealed class Screen(val route: String
     //Actividades: juegos de cartas
     object juegosdecartas: Screen("cartas")
     object cartas: Screen("juego de cartas")
+    object terminastejuegosdecartas: Screen("terminastejuegosdecartas")
 }

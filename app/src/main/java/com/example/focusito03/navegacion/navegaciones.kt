@@ -31,6 +31,7 @@ import com.example.focusito03.interfaces.fabut
 import com.example.focusito03.interfaces.fad
 import com.example.focusito03.interfaces.fon
 import com.example.focusito03.interfaces.fonfo
+import com.example.focusito03.interfaces.informacion
 import com.example.focusito03.interfaces.juegosdecartas
 import com.example.focusito03.interfaces.mop
 import com.example.focusito03.interfaces.mopi
@@ -126,6 +127,7 @@ fun Navigate(modifier: Modifier = Modifier) {
         composable(Screen.quiz4pregunta6.route) { Quiz4pregunta6(navController) }
         composable(Screen.quiz4pregunta7.route) { Quiz4pregunta7(navController) }
         composable(Screen.quiz4pregunta8.route) { Quiz4pregunta8(navController) }
+        composable(Screen.repasemos.route) { informacion(navController) }
         composable(Screen.comencemosconectores.route) { conectores(navController) }
         composable(Screen.conector1.route) { PantallaConectores(navController) }
         composable(Screen.conector2.route) { PantallaConectores2(navController) }

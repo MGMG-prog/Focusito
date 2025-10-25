@@ -149,7 +149,7 @@ fun Nahhhhh(navController: NavController) {
 
         Button(
             onClick = {
-                navController.navigate(Screen.comencemosconectores.route)
+                navController.navigate(Screen.repasemos.route)
             },
             enabled = selectedOption != null,
             colors = ButtonDefaults.buttonColors(
