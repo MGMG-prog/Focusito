@@ -71,6 +71,7 @@ class LoginViewModel: ViewModel() {
             displayName = displayName.toString(),
             role = "",
             avatar = "",
+            score = 0,
             id = userId
         ).toMap()
 
@@ -133,4 +134,55 @@ class LoginViewModel: ViewModel() {
             }
     }
 
+    fun addPoints(points: Int, onUpdated: (Int) -> Unit = {}) {
+        val userId = auth.currentUser?.uid ?: return
+        val userRef = FirebaseFirestore.getInstance().collection("users").document(userId)
+
+        FirebaseFirestore.getInstance().runTransaction { transaction ->
+            val snapshot = transaction.get(userRef)
+            val currentScore = snapshot.getLong("score") ?: 0
+            val newScore = currentScore + points
+            transaction.update(userRef, "score", newScore)
+            newScore
+        }.addOnSuccessListener { newScore ->
+            Log.d("Points", "Se añadieron $points puntos correctamente.")
+            onUpdated(newScore.toInt()) // 🔹 devolvemos el nuevo valor
+        }.addOnFailureListener { e ->
+            Log.e("Points", "Error al actualizar puntos: ${e.message}")
+        }
+    }
+
+    fun subtractPoints(points: Int, onUpdated: (Int) -> Unit = {}) {
+        val userId = auth.currentUser?.uid ?: return
+        val userRef = FirebaseFirestore.getInstance().collection("users").document(userId)
+
+        FirebaseFirestore.getInstance().runTransaction { transaction ->
+            val snapshot = transaction.get(userRef)
+            val currentScore = snapshot.getLong("score") ?: 0
+            val newScore = (currentScore - points).coerceAtLeast(0)
+            transaction.update(userRef, "score", newScore)
+            newScore
+        }.addOnSuccessListener { newScore ->
+            Log.d("Points", "Se restaron $points puntos correctamente.")
+            onUpdated(newScore.toInt())
+        }.addOnFailureListener { e ->
+            Log.e("Points", "Error al actualizar puntos: ${e.message}")
+        }
+    }
+
+    fun getUserScore(onResult: (Int?) -> Unit) {
+        val userId = auth.currentUser?.uid ?: return
+
+        FirebaseFirestore.getInstance().collection("users")
+            .document(userId)
+            .get()
+            .addOnSuccessListener { document ->
+                val score = document.getLong("score")?.toInt()
+                onResult(score)
+            }
+            .addOnFailureListener { e ->
+                Log.e("Score", "Error al obtener puntaje: ${e.message}")
+                onResult(null)
+            }
+    }
 }
