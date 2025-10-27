@@ -67,5 +67,6 @@ sealed class Screen(val route: String
     //Actividades: juegos de cartas
     object juegosdecartas: Screen("cartas")
     object cartas: Screen("juego de cartas")
-    object terminastejuegosdecartas: Screen("terminastejuegosdecartas")
+    //Avatares
+    object avatares: Screen("avatares")
 }

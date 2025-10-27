@@ -75,8 +75,8 @@ fun registro(
             tint = Color.Unspecified,
         )
         TextField(
-            value = correo,
-            onValueChange = { correo = it },
+            value = nombre,
+            onValueChange = { nombre = it },
             placeholder = {
                 Text(
                     "Nombre completo",color = Color(0xFF051d40)
@@ -131,8 +131,8 @@ fun registro(
         )
         Spacer(modifier = Modifier.height(25.dp))
         TextField(
-            value = correo,
-            onValueChange = { correo = it },
+            value = contrasena,
+            onValueChange = { contrasena = it },
             placeholder = {
                 Text(
                     "Contraseña",color = Color(0xFF051d40)
@@ -166,7 +166,7 @@ fun registro(
                     contrasena,
                     nombre
                 ) {
-                    navController.navigate(Screen.roles.route)
+                    navController.navigate(Screen.avatares.route)
                 }
             },
 

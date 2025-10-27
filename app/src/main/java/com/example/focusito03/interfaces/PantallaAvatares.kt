@@ -21,24 +21,30 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.focusito03.R
 import androidx.navigation.compose.rememberNavController
+import com.example.focusito03.navegacion.Screen
+import com.example.focusito03.view.model.LoginViewModel
 
 @Composable
-fun PantallaAvatares() {
+fun PantallaAvatares(
+    navController: NavController,
+    viewModel: LoginViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+) {
     val avatares = listOf(
-        R.drawable.jirafa,
-        R.drawable.mapache,
-        R.drawable.fondo,
-        R.drawable.zo,
-        R.drawable.buho,
-        R.drawable.aguila,
-        R.drawable.zorro,
-        R.drawable.fondo,
-        R.drawable.osito,
-        R.drawable.fondodecartas,
-        R.drawable.venado,
-        R.drawable.leon
+        R.drawable.perro,
+        R.drawable.nutria,
+        R.drawable.vaca,
+        R.drawable.rana,
+        R.drawable.caballitodemar,
+        R.drawable.cabra,
+        R.drawable.zorro2,
+        R.drawable.foca,
+        R.drawable.castor,
+        R.drawable.flamenco,
+        R.drawable.yigre,
+        R.drawable.leon1
     )
 
     var avatarSeleccionado by remember { mutableStateOf<Int?>(null) }
@@ -59,15 +65,8 @@ fun PantallaAvatares() {
                 .padding(top = 60.dp, bottom = 40.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Título
-            Text(
-                text = "avatares",
-                fontSize = 36.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.Black,
-                modifier = Modifier.padding(bottom = 40.dp),
-                textAlign = TextAlign.Center
-            )
+
+            Spacer(modifier = Modifier.height(270.dp))
 
             // Cuadrícula de avatares
             LazyVerticalGrid(
@@ -75,14 +74,35 @@ fun PantallaAvatares() {
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 modifier = Modifier
-                    .padding(horizontal = 24.dp)
-                    .height(380.dp)
+                    .padding(horizontal = 28.dp)
+                    .height(455.dp)
             ) {
                 items(avatares) { avatar ->
                     AvatarItem(
                         imagen = avatar,
                         seleccionado = avatarSeleccionado == avatar,
-                        onClick = { avatarSeleccionado = avatar }
+                        onClick = {
+                            avatarSeleccionado = avatar
+
+                            val nombreAvatar = when (avatarSeleccionado) {
+                                R.drawable.perro -> "perro"
+                                R.drawable.nutria -> "nutria"
+                                R.drawable.vaca -> "vaca"
+                                R.drawable.rana -> "rana"
+                                R.drawable.caballitodemar -> "caballitodemar"
+                                R.drawable.cabra -> "cabra"
+                                R.drawable.zorro2 -> "zorro2"
+                                R.drawable.foca -> "foca"
+                                R.drawable.castor -> "castor"
+                                R.drawable.flamenco -> "flamenco"
+                                R.drawable.yigre -> "yigre"
+                                R.drawable.leon1 -> "leon1"
+                                else -> ""
+                            }
+
+                            viewModel.assignAvatar(nombreAvatar)
+                            navController.navigate(Screen.roles.route)
+                        }
                     )
                 }
             }
@@ -115,5 +135,5 @@ fun AvatarItem(imagen: Int, seleccionado: Boolean, onClick: () -> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewAvatares() {
-    PantallaAvatares()
+    PantallaAvatares(navController = rememberNavController())
 }

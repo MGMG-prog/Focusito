@@ -70,6 +70,7 @@ class LoginViewModel: ViewModel() {
             userId = userId.toString(),
             displayName = displayName.toString(),
             role = "",
+            avatar = "",
             id = userId
         ).toMap()
 
@@ -117,4 +118,19 @@ class LoginViewModel: ViewModel() {
                 onResult(null)
             }
     }
+
+    fun assignAvatar(avatarName: String) {
+        val userId = auth.currentUser?.uid ?: return
+
+        FirebaseFirestore.getInstance().collection("users")
+            .document(userId)
+            .update("avatar", avatarName)
+            .addOnSuccessListener {
+                Log.d("Avatar", "Avatar actualizado: $avatarName")
+            }
+            .addOnFailureListener {
+                Log.d("Avatar", "Error al actualizar avatar: $it")
+            }
+    }
+
 }

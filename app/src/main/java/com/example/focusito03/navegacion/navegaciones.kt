@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.focusito03.interfaces.Login
+import com.example.focusito03.interfaces.PantallaAvatares
 import com.example.focusito03.interfaces.PantallaConectores
 import com.example.focusito03.interfaces.PantallaConectores2
 import com.example.focusito03.interfaces.PantallaConectores3
@@ -139,6 +140,8 @@ fun Navigate(modifier: Modifier = Modifier) {
         //Actividades: juegodecartas
         composable(Screen.juegosdecartas.route) { juegosdecartas(navController) }
         composable(Screen.cartas.route) { PantallaJuego(navController) }
+        //Avatares
+        composable(Screen.avatares.route) { PantallaAvatares(navController) }
     }
 }
 
