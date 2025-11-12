@@ -72,6 +72,15 @@ fun profe (navController: NavController) {
                 .align(Alignment.TopStart)
                 .clickable { navController.popBackStack() }
         )
+        Icon(
+            imageVector = Icons.Filled.ArrowBack,
+            contentDescription = "Volver",
+            tint = Color.Yellow,
+            modifier = Modifier
+                .size(70.dp)
+                .align(Alignment.TopStart)
+                .clickable { navController.popBackStack() }
+        )
         Image(
             painter = painterResource(
                 id = if (musicaActiva) R.drawable.sonido else R.drawable.sonidooff
@@ -132,7 +141,7 @@ fun profe (navController: NavController) {
             }
             Spacer(modifier = Modifier.height(30.dp))
             OutlinedButton(
-                {navController.navigate(Screen.actividades.route)},
+                {navController.navigate(Screen.puntos.route)},
                 shape = RoundedCornerShape(70.dp),
                 modifier = Modifier
                     .fillMaxWidth(0.8f)
