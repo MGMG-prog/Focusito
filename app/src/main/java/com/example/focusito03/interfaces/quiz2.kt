@@ -1,13 +1,18 @@
 package com.example.focusito03.interfaces
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,30 +32,41 @@ import com.example.focusito03.navegacion.Screen
 fun quiz2(
     navController: NavController,
 ) {
-    Image(
-        painter = painterResource(id = R.drawable.empesamosquiz2),
-        contentDescription = null,
-        contentScale = ContentScale.Crop,
-        modifier = Modifier.fillMaxSize()
-    )
-    Column(
+    Box {
+        Image(
+            painter = painterResource(id = R.drawable.empesamosquiz2),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize()
+        )
+        Icon(
+            imageVector = Icons.Filled.ArrowBack,
+            contentDescription = "Volver",
+            tint = Color.Yellow,
             modifier = Modifier
-                .fillMaxSize(),
-    verticalArrangement = Arrangement.Center,
-    horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Button(
-            {navController.navigate(Screen.quiz2pregunta1.route)},
-            modifier = Modifier.run { size(width = 350.dp, height = 80.dp) },
-            contentPadding = PaddingValues(horizontal = 10.dp, vertical = 20.dp),
-            colors = ButtonDefaults.buttonColors(Color(0xFFc3d9f8)),
+                .size(50.dp)
+                .align(Alignment.TopStart)
+                .clickable { navController.navigate(Screen.actividades.route) }
+        )
+        Column(
+                modifier = Modifier
+                    .fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
-                text = "Lo estoy",
-                fontSize = 35
-                    .sp,
-                color = Color.Black
-            )
+            Button(
+                {navController.navigate(Screen.quiz2pregunta1.route)},
+                modifier = Modifier.run { size(width = 350.dp, height = 80.dp) },
+                contentPadding = PaddingValues(horizontal = 10.dp, vertical = 20.dp),
+                colors = ButtonDefaults.buttonColors(Color(0xFFc3d9f8)),
+            ) {
+                Text(
+                    text = "Lo estoy",
+                    fontSize = 35
+                        .sp,
+                    color = Color.Black
+                )
+            }
         }
     }
 }

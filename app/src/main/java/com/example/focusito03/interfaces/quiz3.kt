@@ -1,14 +1,19 @@
 package com.example.focusito03.interfaces
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -29,31 +34,42 @@ import com.example.focusito03.navegacion.Screen
 fun quiz3(
     navController: NavController,
 ) {
-    Image(
-        painter = painterResource(id = R.drawable.empescemosquiz3),
-        contentDescription = null,
-        contentScale = ContentScale.Crop,
-        modifier = Modifier.fillMaxSize()
-    )
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(bottom = 40.dp),
-        verticalArrangement = Arrangement.Bottom,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Button(
-            {navController.navigate(Screen.quiz3pregunta1.route)},
-            modifier = Modifier.run { size(width = 350.dp, height = 80.dp) },
-            contentPadding = PaddingValues(horizontal = 10.dp, vertical = 20.dp),
-            colors = ButtonDefaults.buttonColors(Color(0xFF120078)),
+    Box {
+        Image(
+            painter = painterResource(id = R.drawable.empescemosquiz3),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize()
+        )
+        Icon(
+            imageVector = Icons.Filled.ArrowBack,
+            contentDescription = "Volver",
+            tint = Color.Yellow,
+            modifier = Modifier
+                .size(50.dp)
+                .align(Alignment.TopStart)
+                .clickable { navController.navigate(Screen.actividades.route) }
+        )
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(bottom = 40.dp),
+            verticalArrangement = Arrangement.Bottom,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
-                text = "Comencemos",
-                fontSize = 35
-                    .sp,
-                color = Color.White
-            )
+            Button(
+                {navController.navigate(Screen.quiz3pregunta1.route)},
+                modifier = Modifier.run { size(width = 350.dp, height = 80.dp) },
+                contentPadding = PaddingValues(horizontal = 10.dp, vertical = 20.dp),
+                colors = ButtonDefaults.buttonColors(Color(0xFF120078)),
+            ) {
+                Text(
+                    text = "Comencemos",
+                    fontSize = 35
+                        .sp,
+                    color = Color.White
+                )
+            }
         }
     }
 }
