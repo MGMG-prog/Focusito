@@ -146,7 +146,7 @@ class LoginViewModel: ViewModel() {
             newScore
         }.addOnSuccessListener { newScore ->
             Log.d("Points", "Se añadieron $points puntos correctamente.")
-            onUpdated(newScore.toInt()) // 🔹 devolvemos el nuevo valor
+            onUpdated(newScore.toInt())
         }.addOnFailureListener { e ->
             Log.e("Points", "Error al actualizar puntos: ${e.message}")
         }

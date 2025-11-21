@@ -45,7 +45,7 @@ fun generarCartas(): List<Carta> {
     )
 
     return (imagenes + imagenes)
-        .shuffled()
+        .shuffled() 
         .mapIndexed { index, imagen -> Carta(id = index, imagen = imagen) }
 }
 
@@ -120,7 +120,6 @@ fun PantallaJuego(navController: NavController) {
                     CartaView(
                         carta = carta,
                         onClick = {
-                            // 🧠 Si el juego está bloqueado o la carta ya fue volteada/encontrada, no hacer nada
                             if (bloqueo || carta.volteada || carta.encontrada) return@CartaView
 
                             cartas = cartas.map {
@@ -131,7 +130,7 @@ fun PantallaJuego(navController: NavController) {
                                 primeraCarta = carta
                             } else {
                                 val segunda = carta
-                                bloqueo = true // 🚫 Bloquear clicks adicionales
+                                bloqueo = true
 
                                 if (primeraCarta!!.imagen == segunda.imagen) {
                                     cartas = cartas.map {
@@ -140,7 +139,7 @@ fun PantallaJuego(navController: NavController) {
                                         else it
                                     }
                                     primeraCarta = null
-                                    bloqueo = false // 🔓 Desbloquear
+                                    bloqueo = false
                                 } else {
                                     scope.launch {
                                         delay(1000)
@@ -150,7 +149,7 @@ fun PantallaJuego(navController: NavController) {
                                             else it
                                         }
                                         primeraCarta = null
-                                        bloqueo = false // 🔓 Desbloquear
+                                        bloqueo = false
                                     }
                                 }
                             }

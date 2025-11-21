@@ -78,7 +78,7 @@ fun estud(navController: NavController) {
             modifier = Modifier
                 .size(70.dp)
                 .align(Alignment.TopStart)
-                .clickable { navController.popBackStack() }
+                .clickable {  navController.navigate(Screen.estudiante.route) }
         )
         Image(
             painter = painterResource(

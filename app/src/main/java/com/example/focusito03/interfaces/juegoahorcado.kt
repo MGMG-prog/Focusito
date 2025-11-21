@@ -54,7 +54,6 @@ import com.example.focusito03.navegacion.Screen
 @Composable
 fun ahorcadojuego(navController: NavController,) {
 
-
     Box(
         modifier = Modifier
             .fillMaxSize()
